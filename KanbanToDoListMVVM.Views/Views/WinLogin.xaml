@@ -23,21 +23,21 @@
 
             <Label Content="Username" />
             <TextBox Height="25" Margin="0,0,0,10"
-                     Text ="{Binding txtUsername , UpdateSourceTrigger=PropertyChanged }"
+                     Text ="{Binding TxtUsername , UpdateSourceTrigger=PropertyChanged }"
                      />
 
             <Label Content="PassWord" />
             <TextBox Height="25" Margin="0,0,0,10"
-                         Text ="{Binding txtPassword , UpdateSourceTrigger=PropertyChanged }"
+                         Text ="{Binding TxtPassword , UpdateSourceTrigger=PropertyChanged }"
                          />
 
         </StackPanel>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Command="{Binding submitConnection}" Content="Connection Check" Name="btnWinConnection" Margin="0,0,0,0" Width="110" Height="30" FontWeight="Bold" Background="#FF9800" Foreground="White" Click="btnWinConnection_Click" />
-            <Button Command="{Binding submitSingup}" Content="Sing Up" Name="btnWinRegister" Width="75" Margin="8,0,0,0" Height="30" FontWeight="Bold" Background="#2196F3" Foreground="White" Click="btnWinRegister_Click" />
-            <Button Command="{Binding submitLogin}" Content="Login" Name="btnLogin" Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" Click="btnLogin_Click"/>
+            <Button Command="{Binding SubmitConnection}" Content="Connection Check" Name="btnWinConnection" Margin="0,0,0,0" Width="110" Height="30" FontWeight="Bold" Background="#FF9800" Foreground="White" Click="btnWinConnection_Click" />
+            <Button Command="{Binding SubmitSingup}" Content="Sing Up" Name="btnWinRegister" Width="75" Margin="8,0,0,0" Height="30" FontWeight="Bold" Background="#2196F3" Foreground="White" Click="btnWinRegister_Click" />
+            <Button Command="{Binding SubmitLogin}" Content="Login" Name="btnLogin" Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" Click="btnLogin_Click"/>
         </StackPanel>
 
     </Grid>
