@@ -58,6 +58,9 @@
     <Compile Include="Views\WinConnection.xaml.cs">
       <DependentUpon>WinConnection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WinCreateTask.xaml.cs">
+      <DependentUpon>WinCreateTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\WinConnection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WinCreateTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
