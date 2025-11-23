@@ -15,8 +15,8 @@ namespace KanbanToDoListMVVM.Models.Models
     
     public partial class KanbanToDoListMVVMEntities : DbContext
     {
-        public KanbanToDoListMVVMEntities()
-            : base("name=KanbanToDoListMVVMEntities")
+        public KanbanToDoListMVVMEntities(string connectionString)
+            : base(connectionString)
         {
         }
     
