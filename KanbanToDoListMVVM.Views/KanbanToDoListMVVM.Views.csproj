@@ -129,5 +129,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KanbanToDoListMVVM.Models\KanbanToDoListMVVM.Models.csproj">
+      <Project>{392d0913-8798-4e7a-a0f0-37145bb28cb5}</Project>
+      <Name>KanbanToDoListMVVM.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KanbanToDoListMVVM.ViewModels\KanbanToDoListMVVM.ViewModels.csproj">
+      <Project>{15438166-7997-446f-8761-dae3e81c4bc0}</Project>
+      <Name>KanbanToDoListMVVM.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,9 +35,9 @@
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Command="{Binding SubmitConnection}" Content="Connection Check" Name="btnWinConnection" Margin="0,0,0,0" Width="110" Height="30" FontWeight="Bold" Background="#FF9800" Foreground="White" Click="btnWinConnection_Click" />
-            <Button Command="{Binding SubmitSingup}" Content="Sing Up" Name="btnWinRegister" Width="75" Margin="8,0,0,0" Height="30" FontWeight="Bold" Background="#2196F3" Foreground="White" Click="btnWinRegister_Click" />
-            <Button Command="{Binding SubmitLogin}" Content="Login" Name="btnLogin" Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" Click="btnLogin_Click"/>
+            <Button Command="{Binding SubmitConnection}" Content="Connection Check"  Margin="0,0,0,0" Width="110" Height="30" FontWeight="Bold" Background="#FF9800" Foreground="White" />
+            <Button Command="{Binding SubmitSingup}" Content="Sing Up"  Width="75" Margin="8,0,0,0" Height="30" FontWeight="Bold" Background="#2196F3" Foreground="White" />
+            <Button Command="{Binding SubmitLogin}" Content="Login"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" />
         </StackPanel>
 
     </Grid>

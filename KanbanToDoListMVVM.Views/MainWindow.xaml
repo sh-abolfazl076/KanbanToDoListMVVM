@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KanbanToDoListMVVM.Views"
+        xmlns:view="clr-namespace:KanbanToDoListMVVM.Views.Views"
+        xmlns:viewModels="clr-namespace:KanbanToDoListMVVM.ViewModels.ViewModels;assembly=KanbanToDoListMVVM.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
+                    <view:WinLogin />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
+
 </Window>
