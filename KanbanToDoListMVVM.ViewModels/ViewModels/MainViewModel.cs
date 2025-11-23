@@ -1,17 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// System
+using KanbanToDoListMVVM.ViewModels.Stores;
+
+
+// Internal
+
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; set; }
-        public MainViewModel() 
+        private NavigationStore _navigationStore;
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+
+        public MainViewModel(NavigationStore navigationStore) 
         {
-            CurrentViewModel = new LoginViewModel();
+            _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModleChanged;
+        }
+
+        private void OnCurrentViewModleChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

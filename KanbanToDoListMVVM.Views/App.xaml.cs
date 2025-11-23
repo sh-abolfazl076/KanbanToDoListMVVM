@@ -1,10 +1,10 @@
 ﻿// System
-using KanbanToDoListMVVM.ViewModels.ViewModels;
 using System.Windows;
 
 
-
 // Internal
+using KanbanToDoListMVVM.ViewModels.Stores;
+using KanbanToDoListMVVM.ViewModels.ViewModels;
 
 
 
@@ -17,10 +17,12 @@ namespace KanbanToDoListMVVM.Views
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-
+            NavigationStore navigationStore = new NavigationStore();
+            navigationStore.CurrentViewModel = new LoginViewModel();
+            
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(navigationStore)
             };
             MainWindow.Show();
             base.OnStartup(e);
