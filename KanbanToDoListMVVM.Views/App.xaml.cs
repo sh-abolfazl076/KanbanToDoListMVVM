@@ -22,19 +22,14 @@ namespace KanbanToDoListMVVM.Views
         protected override void OnStartup(StartupEventArgs e)
         {
             NavigationStore navigationStore = new NavigationStore();
-            
 
-            ApplicationStore.Instance.SetConnectionInfo(
-                Settings.Default.ServerNameDatabase,
-                Settings.Default.DatabaseName,
-                Settings.Default.UsernameDatabase,
-                Settings.Default.PasswordDatabase
-            );
+            var store = ApplicationStore.Instance;
+            store.LoadFromFile(); 
 
-          
 
             if (ApplicationStore.Instance.TestConnection())
             {
+
                 navigationStore.CurrentViewModel = new LoginViewModel(navigationStore);
                 MainWindow = new MainWindow()
                 {
@@ -54,12 +49,7 @@ namespace KanbanToDoListMVVM.Views
                 base.OnStartup(e);
             }
 
-            MessageBox.Show(
-                $"Server: '{Settings.Default.ServerNameDatabase}'\n" +
-                $"DB: '{Settings.Default.DatabaseName}'\n" +
-                $"User: '{Settings.Default.UsernameDatabase}'\n" +
-                $"Pass: '{Settings.Default.PasswordDatabase}'"
-            );
+
 
 
         }

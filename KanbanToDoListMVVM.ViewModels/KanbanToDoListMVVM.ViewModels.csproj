@@ -37,6 +37,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\KanbanToDoListMVVM.Models\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,6 +56,7 @@
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\ApplicationStore.cs" />
+    <Compile Include="Stores\ConnectionInfo.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="ViewModels\ConnectionViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -61,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

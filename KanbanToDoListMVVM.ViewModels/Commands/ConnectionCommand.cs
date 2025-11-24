@@ -5,7 +5,7 @@ using System.Windows;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
-using KanbanToDoListMVVM.Models.Properties;
+
 
 
 
@@ -32,13 +32,6 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 
             
             ApplicationStore.Instance.SetConnectionInfo(server, db, user, password);
-
-
-            Settings.Default.ServerNameDatabase = server;
-            Settings.Default.DatabaseName = db;
-            Settings.Default.UsernameDatabase = user;
-            Settings.Default.PasswordDatabase = password;
-            Settings.Default.Save();
 
 
             if (ApplicationStore.Instance.TestConnection())

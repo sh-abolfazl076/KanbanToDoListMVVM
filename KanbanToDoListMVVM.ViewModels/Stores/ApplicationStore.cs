@@ -1,5 +1,9 @@
 ﻿// System
 using System;
+using System.IO;
+using Newtonsoft.Json;
+
+
 
 
 // Internal
@@ -10,6 +14,8 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 {
     public class ApplicationStore
     {
+        private static readonly string filePath = "connection.json";
+
         private static readonly Lazy<ApplicationStore> _instance =
             new Lazy<ApplicationStore>(() => new ApplicationStore());
 
@@ -37,8 +43,39 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
             DatabaseName = database;
             UsernameDatabase = user;
             PasswordDatabase = password;
+            SaveToFile();
 
         }// End
+
+        public void LoadFromFile()
+        {
+            if (File.Exists("connection.json"))
+            {
+                string json = File.ReadAllText("connection.json");
+                var info = JsonConvert.DeserializeObject<ConnectionInfo>(json);
+                if (info != null)
+                {
+                    ServerNameDatabase = info.Server;
+                    DatabaseName = info.Database;
+                    UsernameDatabase = info.Username;
+                    PasswordDatabase = info.Password;
+                }
+            }
+        }
+
+        private void SaveToFile()
+        {
+            var info = new ConnectionInfo
+            {
+                Server = ServerNameDatabase,
+                Database = DatabaseName,
+                Username = UsernameDatabase,
+                Password = PasswordDatabase
+            };
+
+            string json = JsonConvert.SerializeObject(info, Formatting.Indented);
+            File.WriteAllText("connection.json", json);
+        }
 
 
         // make connection
