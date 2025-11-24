@@ -31,12 +31,12 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
         /// <param name="database"></param>
         /// <param name="user"></param>
         /// <param name="pass"></param>
-        public void SetConnectionInfo(string server, string database, string user, string pass)
+        public void SetConnectionInfo(string server, string database, string user, string password)
         {
             ServerNameDatabase = server;
             DatabaseName = database;
             UsernameDatabase = user;
-            PasswordDatabase = pass;
+            PasswordDatabase = password;
 
         }// End
 

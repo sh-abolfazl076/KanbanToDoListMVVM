@@ -1,8 +1,10 @@
 ﻿// System
+using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
+// Internal
+using KanbanToDoListMVVM.ViewModels.Stores;
 using System.Windows.Input;
 
-
-// Internal
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
@@ -70,8 +72,9 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 
         public ICommand ButtonCheckConnection {  get;}
 
-        public ConnectionViewModel()
+        public ConnectionViewModel(NavigationStore navigationStore)
         {
+            ButtonCheckConnection = new ConnectionCommand<LoginViewModel>(this,new NavigationService<LoginViewModel>(navigationStore,() => new LoginViewModel(navigationStore)));
 
         }
 

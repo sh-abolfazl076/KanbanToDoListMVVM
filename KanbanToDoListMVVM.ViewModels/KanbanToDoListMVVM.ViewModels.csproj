@@ -37,6 +37,7 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\KanbanToDoListMVVM.Models\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,12 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\ConnectionCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\ApplicationStore.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
@@ -63,18 +60,16 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\KanbanToDoListMVVM.Models\KanbanToDoListMVVM.Models.csproj">
-      <Project>{392D0913-8798-4E7A-A0F0-37145BB28CB5}</Project>
+      <Project>{392d0913-8798-4e7a-a0f0-37145bb28cb5}</Project>
       <Name>KanbanToDoListMVVM.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

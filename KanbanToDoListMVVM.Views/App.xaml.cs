@@ -6,6 +6,8 @@ using System.Windows;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
 using KanbanToDoListMVVM.Views.Properties;
+//using KanbanToDoListMVVM.ViewModels.Properties;
+
 
 
 
@@ -33,7 +35,7 @@ namespace KanbanToDoListMVVM.Views
 
             if (ApplicationStore.Instance.TestConnection())
             {
-                navigationStore.CurrentViewModel = new LoginViewModel();
+                navigationStore.CurrentViewModel = new LoginViewModel(navigationStore);
                 MainWindow = new MainWindow()
                 {
                     DataContext = new MainViewModel(navigationStore)
@@ -43,7 +45,7 @@ namespace KanbanToDoListMVVM.Views
             }
             else
             {
-                navigationStore.CurrentViewModel = new ConnectionViewModel();
+                navigationStore.CurrentViewModel = new ConnectionViewModel(navigationStore);
                 MainWindow = new MainWindow()
                 {
                     DataContext = new MainViewModel(navigationStore)
@@ -51,6 +53,13 @@ namespace KanbanToDoListMVVM.Views
                 MainWindow.Show();
                 base.OnStartup(e);
             }
+
+            MessageBox.Show(
+                $"Server: '{Settings.Default.ServerNameDatabase}'\n" +
+                $"DB: '{Settings.Default.DatabaseName}'\n" +
+                $"User: '{Settings.Default.UsernameDatabase}'\n" +
+                $"Pass: '{Settings.Default.PasswordDatabase}'"
+            );
 
 
         }

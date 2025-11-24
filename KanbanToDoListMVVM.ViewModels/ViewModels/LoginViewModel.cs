@@ -1,4 +1,5 @@
 ﻿// System
+using KanbanToDoListMVVM.ViewModels.Stores;
 using System.Windows.Input;
 
 
@@ -45,7 +46,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public ICommand SubmitSingup { get; }
         public ICommand SubmitLogin { get; }
 
-        public LoginViewModel()
+        public LoginViewModel(NavigationStore navigationStore)
         {
 
         }
