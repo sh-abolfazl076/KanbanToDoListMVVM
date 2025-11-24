@@ -18,6 +18,10 @@ namespace KanbanToDoListMVVM.Views.Properties
     {
 
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        internal string ServerNameDatabase;
+        internal string DatabaseName;
+        internal string UsernameDatabase;
+        internal string PasswordDatabase;
 
         public static Settings Default
         {

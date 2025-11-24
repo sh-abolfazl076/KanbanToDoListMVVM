@@ -5,6 +5,8 @@ using System.Windows;
 // Internal
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
+using KanbanToDoListMVVM.Views.Properties;
+
 
 
 
@@ -18,14 +20,39 @@ namespace KanbanToDoListMVVM.Views
         protected override void OnStartup(StartupEventArgs e)
         {
             NavigationStore navigationStore = new NavigationStore();
-            navigationStore.CurrentViewModel = new LoginViewModel();
             
-            MainWindow = new MainWindow()
+
+            ApplicationStore.Instance.SetConnectionInfo(
+                Settings.Default.ServerNameDatabase,
+                Settings.Default.DatabaseName,
+                Settings.Default.UsernameDatabase,
+                Settings.Default.PasswordDatabase
+            );
+
+          
+
+            if (ApplicationStore.Instance.TestConnection())
             {
-                DataContext = new MainViewModel(navigationStore)
-            };
-            MainWindow.Show();
-            base.OnStartup(e);
+                navigationStore.CurrentViewModel = new LoginViewModel();
+                MainWindow = new MainWindow()
+                {
+                    DataContext = new MainViewModel(navigationStore)
+                };
+                MainWindow.Show();
+                base.OnStartup(e);
+            }
+            else
+            {
+                navigationStore.CurrentViewModel = new ConnectionViewModel();
+                MainWindow = new MainWindow()
+                {
+                    DataContext = new MainViewModel(navigationStore)
+                };
+                MainWindow.Show();
+                base.OnStartup(e);
+            }
+
+
         }
     }
 }
