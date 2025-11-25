@@ -39,6 +39,22 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
+        private string _txtPasswordChekSingUp;
+        public string TxtPasswordChekSingUp
+        {
+            get
+            {
+                return _txtPasswordChekSingUp;
+            }
+            set
+            {
+                _txtPasswordChekSingUp = value;
+                OnPropertyChanged(nameof(TxtPasswordChekSingUp));
+            }
+        }
+        //// 
+
+
 
         public ICommand SubmitAddUser{ get; }
         public ICommand ButtonBack{ get; }

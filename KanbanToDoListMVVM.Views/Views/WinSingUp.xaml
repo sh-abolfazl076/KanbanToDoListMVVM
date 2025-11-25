@@ -29,7 +29,7 @@
 
             <Label Content="Confirm Password" />
             <TextBox  Height="25"
-                      Text ="{Binding TxtPasswordCheckSingUp , UpdateSourceTrigger=PropertyChanged }"/>
+                      Text ="{Binding TxtPasswordChekSingUp , UpdateSourceTrigger=PropertyChanged }"/>
 
         </StackPanel>
 
