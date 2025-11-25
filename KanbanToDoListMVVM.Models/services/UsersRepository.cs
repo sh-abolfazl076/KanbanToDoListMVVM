@@ -1,61 +1,56 @@
 ﻿// System
-using System.Linq;
-using System.Collections.Generic;
-
-
-
+using KanbanToDoListMVVM.Models.Models;
 // Internal
-using Kanban_ToDoList.DataLayer.Model;
-using Kanban_ToDoList.DataLayer.Repository;
-using User = Kanban_ToDoList.DataLayer.Model.User;
+using KanbanToDoListMVVM.Models.Repository;
+using System.Collections.Generic;
+using System.Linq;
 
-
-namespace Kanban_ToDoList.DataLayer.Services
+namespace KanbanToDoListMVVM.Models.Services
 {
     public class UsersRepository : IUsersRepository
     {
-        private KanbanToDoListWPFEntities db;
+        private KanbanToDoListMVVMEntities db;
 
-        public UsersRepository(KanbanToDoListWPFEntities context)
+        public UsersRepository(KanbanToDoListMVVMEntities context)
         {
             db = context;
         }
-        
-        public bool AddUser(User user)
+
+        public bool AddUser(Users user)
         {
             try
             {
                 db.Users.Add(user);
                 return true;
             }
-            catch 
+            catch
             {
 
                 return false;
             }
         }
 
-        public IEnumerable<User> FilterUserByUsername(string username)
+        public IEnumerable<Users> FilterUserByUsername(string username)
         {
             return db.Users.Where(f => f.UserName.Contains(username));
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<Users> GetAllUsers()
         {
             return db.Users.ToList();
         }
 
-        public User GetUserById(int userId)
+        public Users GetUserById(int userId)
         {
             return db.Users.Find(userId);
         }
 
-        public User GetUserByUsernameAndPassword(string username, string password)
+        public Users GetUserByUsernameAndPassword(string username, string password)
         {
             return db.Users.FirstOrDefault(u => u.UserName == username && u.PassWord == password);
         }
 
-        public User GetUserByUsername(string username)
+        public Users GetUserByUsername(string username)
         {
             return db.Users.FirstOrDefault(u => u.UserName == username);
         }
@@ -72,14 +67,14 @@ namespace Kanban_ToDoList.DataLayer.Services
                 }
                 return false;
             }
-            catch 
+            catch
             {
 
-                return false ;
+                return false;
             }
         }
 
-        public bool UpdataUser(User user)
+        public bool UpdataUser(Users user)
         {
             try
             {

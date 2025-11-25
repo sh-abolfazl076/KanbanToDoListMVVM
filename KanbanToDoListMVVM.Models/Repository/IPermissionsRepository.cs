@@ -3,10 +3,7 @@
 
 // Internal
 
-
-
-
-namespace Kanban_ToDoList.DataLayer.Repository
+namespace KanbanToDoListMVVM.Models.Repository
 {
     public interface IPermissionsRepository
     {

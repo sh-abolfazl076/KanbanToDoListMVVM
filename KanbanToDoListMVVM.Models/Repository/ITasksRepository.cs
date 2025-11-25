@@ -1,20 +1,19 @@
 ﻿// System
+using KanbanToDoListMVVM.Models.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 // Internal
-using Task = Kanban_ToDoList.DataLayer.Model.Task;
+using Task = KanbanToDoListMVVM.Models.Models.Tasks;
 
-
-namespace Kanban_ToDoList.DataLayer.Repository
+namespace KanbanToDoListMVVM.Models.Repository
 {
     public interface ITasksRepository
     {
-        bool AddTask(Task task);
-        IEnumerable<Task> GetAllTasksByUserIdAndStageId(int userId,int stageId);
-        Task GetTaskById(int taskId);
-        bool UpdateTask(Task task);
+        bool AddTask(Tasks task);
+        IEnumerable<Tasks> GetAllTasksByUserIdAndStageId(int userId, int stageId);
+        Tasks GetTaskById(int taskId);
+        bool UpdateTask(Tasks task);
         bool RemoveTaskById(int taskId);
-
     }
 }

@@ -1,23 +1,20 @@
 ﻿// System
 using System.Linq;
 
-
 // Internal
-using Kanban_ToDoList.DataLayer.Model;
-using Kanban_ToDoList.DataLayer.Repository;
+using KanbanToDoListMVVM.Models.Models;
+using KanbanToDoListMVVM.Models.Repository;
 
-
-
-namespace Kanban_ToDoList.DataLayer.Services
+namespace KanbanToDoListMVVM.Models.Services
 {
     public class UserPermissionsRepository : IUserPermissionsRepository
     {
-        private KanbanToDoListWPFEntities db;
-        public UserPermissionsRepository(KanbanToDoListWPFEntities context)
+        private KanbanToDoListMVVMEntities db;
+        public UserPermissionsRepository(KanbanToDoListMVVMEntities context)
         {
             db = context;
         }
-        public bool AddUserPermission(UserPermission userPermission)
+        public bool AddUserPermission(UserPermissions userPermission)
         {
             try
             {
@@ -30,15 +27,15 @@ namespace Kanban_ToDoList.DataLayer.Services
                 return false;
             }
         }
-        public UserPermission CheckPermission(int userId, int permissionId) 
+        public UserPermissions CheckPermission(int userId, int permissionId)
         {
             return db.UserPermissions.FirstOrDefault(p => p.UserId == userId && p.PermissionId == permissionId);
         }
-        public UserPermission GetUserPermissionById(int permissionId)
+        public UserPermissions GetUserPermissionById(int permissionId)
         {
             return db.UserPermissions.Find(permissionId);
         }
-        public bool RemoveUserPermission(int permissionId) 
+        public bool RemoveUserPermission(int permissionId)
         {
             try
             {
@@ -50,7 +47,7 @@ namespace Kanban_ToDoList.DataLayer.Services
                 }
                 return false;
             }
-            catch 
+            catch
             {
 
                 return false;

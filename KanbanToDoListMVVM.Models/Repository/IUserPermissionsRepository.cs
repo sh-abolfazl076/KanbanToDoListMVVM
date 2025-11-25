@@ -1,19 +1,19 @@
 ﻿// System
-using Kanban_ToDoList.DataLayer.Model;
+
 
 
 // Internal
+using KanbanToDoListMVVM.Models.Models;
 
 
 
-
-namespace Kanban_ToDoList.DataLayer.Repository
+namespace KanbanToDoListMVVM.Models.Repository
 {
     public interface IUserPermissionsRepository
     {
-        bool AddUserPermission(UserPermission  userPermission);
-        UserPermission CheckPermission(int userId, int permissionId);
-        UserPermission GetUserPermissionById(int permissionId);
+        bool AddUserPermission(UserPermissions userPermission);
+        UserPermissions CheckPermission(int userId, int permissionId);
+        UserPermissions GetUserPermissionById(int permissionId);
         bool RemoveUserPermission(int permissionId);
         bool RemoveUserPermissionByUserId(int userId);
     }

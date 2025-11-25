@@ -1,47 +1,44 @@
 ﻿// System
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 // Internal
-using Kanban_ToDoList.DataLayer.Model;
-using Kanban_ToDoList.DataLayer.Repository;
-using Task = Kanban_ToDoList.DataLayer.Model.Task;
+using KanbanToDoListMVVM.Models.Models;
+using KanbanToDoListMVVM.Models.Repository;
 
 
 
-namespace Kanban_ToDoList.DataLayer.Services
+namespace KanbanToDoListMVVM.Models.Services
 {
-    public class TasksRepository:ITasksRepository
+    public class TasksRepository : ITasksRepository
     {
-        private KanbanToDoListWPFEntities db;
+        private KanbanToDoListMVVMEntities db;
 
-        public TasksRepository(KanbanToDoListWPFEntities contect)
+        public TasksRepository(KanbanToDoListMVVMEntities contect)
         {
             db = contect;
         }
 
-        public bool AddTask(Task task)
+        public bool AddTask(Tasks task)
         {
             try
             {
                 db.Tasks.Add(task);
                 return true;
             }
-            catch 
+            catch
             {
 
                 return false;
             }
         }
 
-        public IEnumerable<Task> GetAllTasksByUserIdAndStageId(int userId, int stageId)
+        public IEnumerable<Tasks> GetAllTasksByUserIdAndStageId(int userId, int stageId)
         {
             return db.Tasks.Where(t => t.UserId == userId && t.StageId == stageId);
         }
 
-        public Task GetTaskById(int taskId)
+        public Tasks GetTaskById(int taskId)
         {
             return db.Tasks.Find(taskId);
         }
@@ -54,14 +51,14 @@ namespace Kanban_ToDoList.DataLayer.Services
                 db.Tasks.Remove(task);
                 return true;
             }
-            catch 
+            catch
             {
 
                 return false;
             }
         }
 
-        public bool UpdateTask(Task task)
+        public bool UpdateTask(Tasks task)
         {
             try
             {
@@ -74,6 +71,5 @@ namespace Kanban_ToDoList.DataLayer.Services
                 return false;
             }
         }
-
     }
 }

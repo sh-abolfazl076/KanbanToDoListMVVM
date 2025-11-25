@@ -3,17 +3,16 @@ using System.Linq;
 
 
 // Internal
-using Kanban_ToDoList.DataLayer.Repository;
-using Kanban_ToDoList.DataLayer.Model;
+using KanbanToDoListMVVM.Models.Models;
+using KanbanToDoListMVVM.Models.Repository;
 
 
-
-namespace Kanban_ToDoList.DataLayer.Services
+namespace KanbanToDoListMVVM.Models.Services
 {
     public class PermissionsRepository : IPermissionsRepository
     {
-        private KanbanToDoListWPFEntities db;
-        public PermissionsRepository(KanbanToDoListWPFEntities context)
+        private KanbanToDoListMVVMEntities db;
+        public PermissionsRepository(KanbanToDoListMVVMEntities context)
         {
             db = context;
         }

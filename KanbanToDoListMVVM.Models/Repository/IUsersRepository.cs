@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 
 // Internal
-using Kanban_ToDoList.DataLayer.Model;
+using KanbanToDoListMVVM.Models.Models;
 
 
-namespace Kanban_ToDoList.DataLayer.Repository
+namespace KanbanToDoListMVVM.Models.Repository
 {
     public interface IUsersRepository
     {
-        IEnumerable<User> GetAllUsers();
-        IEnumerable<User> FilterUserByUsername(string username);
-        bool AddUser(User user);  
-        User GetUserById(int userId);
-        User GetUserByUsernameAndPassword(string username, string password);
-        User GetUserByUsername(string username);
+        IEnumerable<Users> GetAllUsers();
+        IEnumerable<Users> FilterUserByUsername(string username);
+        bool AddUser(Users user);
+        Users GetUserById(int userId);
+        Users GetUserByUsernameAndPassword(string username, string password);
+        Users GetUserByUsername(string username);
         bool RemoveUserById(int userId);
-        bool UpdataUser(User user);
+        bool UpdataUser(Users user);
     }
 }
