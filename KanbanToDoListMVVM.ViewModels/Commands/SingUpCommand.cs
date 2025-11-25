@@ -15,10 +15,12 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
     public class SingUpCommand: CommandBase
     {
         private SingUpViewModel _ViewModel;
+        private NavigationStore _navigationStore;
 
-        public SingUpCommand(SingUpViewModel viewModel)
+        public SingUpCommand(SingUpViewModel viewModel , NavigationStore navigationStore)
         {
             _ViewModel = viewModel;
+            _navigationStore = navigationStore;
 
         }
 
@@ -61,6 +63,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                             db.Save();
 
                             //MessageBox.Show("User added successfully.");
+
+                            _navigationStore.CurrentViewModel = new LoginViewModel(_navigationStore);
 
                         }
                     }
