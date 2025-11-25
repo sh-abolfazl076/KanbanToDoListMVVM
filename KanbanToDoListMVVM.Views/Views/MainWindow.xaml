@@ -7,16 +7,17 @@
         xmlns:view="clr-namespace:KanbanToDoListMVVM.Views.Views"
         xmlns:viewModels="clr-namespace:KanbanToDoListMVVM.ViewModels.ViewModels;assembly=KanbanToDoListMVVM.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" SizeToContent="WidthAndHeight" >
 
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
-                    <view:WinLogin />
+                    <view:WinLogin  Width="330" Height="350" />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:ConnectionViewModel}">
-                    <view:WinConnection />
+                    <view:WinConnection  Width="445" Height="400" />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
