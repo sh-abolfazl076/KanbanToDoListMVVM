@@ -52,8 +52,8 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public LoginViewModel(NavigationStore navigationStore)
         {
             SubmitConnection = new NavigateCommand<ConnectionViewModel>(new NavigationService<ConnectionViewModel>(navigationStore, () => new ConnectionViewModel(navigationStore)));
+            SubmitSingup = new NavigateCommand<SingUpViewModel>(new NavigationService<SingUpViewModel>(navigationStore, () => new SingUpViewModel(navigationStore)));
 
-                
         }
 
 

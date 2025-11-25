@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace KanbanToDoListMVVM.Views.Views
 {
     /// <summary>
-    /// Interaction logic for SingUpViewModel.xaml
+    /// Interaction logic for WinSingUp.xaml
     /// </summary>
-    public partial class SingUpViewModel : UserControl
+    public partial class WinSingUp : UserControl
     {
-        public SingUpViewModel()
+        public WinSingUp()
         {
             InitializeComponent();
         }

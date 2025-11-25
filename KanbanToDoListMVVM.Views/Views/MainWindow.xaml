@@ -19,6 +19,9 @@
                 <DataTemplate DataType="{x:Type viewModels:ConnectionViewModel}">
                     <view:WinConnection  Width="445" Height="400" />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:SingUpViewModel}">
+                    <view:WinSingUp  Width="370" Height="350" />
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Grid>

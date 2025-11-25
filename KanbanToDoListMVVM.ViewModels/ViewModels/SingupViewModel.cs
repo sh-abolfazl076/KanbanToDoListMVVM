@@ -1,6 +1,9 @@
 ﻿// System
 
 // Internal
+using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
+using KanbanToDoListMVVM.ViewModels.Stores;
 using System.Windows.Input;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
@@ -38,11 +41,11 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         ////
 
         public ICommand SubmitAddUser{ get; }
-        public ICommand ButtonClose{ get; }
+        public ICommand ButtonBack{ get; }
 
-        public SingUpViewModel()
+        public SingUpViewModel(NavigationStore navigationStore)
         {
-
+            ButtonBack = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
         }
 
     }
