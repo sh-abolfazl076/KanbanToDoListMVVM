@@ -1,6 +1,9 @@
 ﻿// System
+using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 
 
@@ -48,7 +51,9 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 
         public LoginViewModel(NavigationStore navigationStore)
         {
+            SubmitConnection = new NavigateCommand<ConnectionViewModel>(new NavigationService<ConnectionViewModel>(navigationStore, () => new ConnectionViewModel(navigationStore)));
 
+                
         }
 
 
