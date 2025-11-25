@@ -80,11 +80,11 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 
         // make connection
         public string EfConnectionString =>
-            $@"metadata=res://*/Model.KanbanModel.csdl|
-        res://*/Model.KanbanModel.ssdl|
-        res://*/Model.KanbanModel.msl;
-        provider=System.Data.SqlClient;
-        provider connection string=""Data Source={ServerNameDatabase};Initial Catalog={DatabaseName};User ID={UsernameDatabase};Password={PasswordDatabase};MultipleActiveResultSets=True;App=EntityFramework""";
+                $@"metadata=res://*/Models.ToDoListModel.csdl|
+            res://*/Models.ToDoListModel.ssdl|
+            res://*/Models.ToDoListModel.msl;
+            provider=System.Data.SqlClient;
+            provider connection string=""Data Source={ServerNameDatabase};Initial Catalog={DatabaseName};User ID={UsernameDatabase};Password={PasswordDatabase};MultipleActiveResultSets=True;App=EntityFramework""";
 
 
         /// <summary>

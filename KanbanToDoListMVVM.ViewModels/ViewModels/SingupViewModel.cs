@@ -46,6 +46,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public SingUpViewModel(NavigationStore navigationStore)
         {
             ButtonBack = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
+            SubmitAddUser = new SingUpCommand(this);
         }
 
     }
