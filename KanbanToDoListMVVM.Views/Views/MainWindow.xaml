@@ -23,7 +23,7 @@
                     <view:WinSingUp  Width="370" Height="350" />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:MainPanleViewModel}">
-                    <view:WinMainPanle  Width="370" Height="350" />
+                    <view:WinMainPanle  Width="600" Height="500" />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>

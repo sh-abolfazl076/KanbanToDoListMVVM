@@ -12,7 +12,7 @@ using KanbanToDoListMVVM.ViewModels.ViewModels;
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
 {
-    public class SingUpCommand: CommandBase
+    public class SingUpCommand: CommandBase 
     {
         private SingUpViewModel _ViewModel;
         private NavigationStore _navigationStore;

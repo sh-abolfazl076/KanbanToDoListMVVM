@@ -27,6 +27,9 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
         public string UsernameDatabase { get; private set; }
         public string PasswordDatabase { get; private set; }
 
+        public string Username { get; set; }
+        public int UserId { get; set; }
+
 
 
 

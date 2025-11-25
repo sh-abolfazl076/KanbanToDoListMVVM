@@ -1,4 +1,5 @@
 ﻿// System
+using KanbanToDoListMVVM.ViewModels.Stores;
 using System;
 using System.Windows.Input;
 
@@ -43,7 +44,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public ICommand ButtomLogOut { get; }
         public ICommand ButtomCreateTask { get; }
 
-        public MainPanleViewModel() 
+        public MainPanleViewModel(NavigationStore navigationStore) 
         {
 
         }
