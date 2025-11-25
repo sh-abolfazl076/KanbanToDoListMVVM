@@ -22,6 +22,9 @@
                 <DataTemplate DataType="{x:Type viewModels:SingUpViewModel}">
                     <view:WinSingUp  Width="370" Height="350" />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:MainPanleViewModel}">
+                    <view:WinMainPanle  Width="370" Height="350" />
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Grid>

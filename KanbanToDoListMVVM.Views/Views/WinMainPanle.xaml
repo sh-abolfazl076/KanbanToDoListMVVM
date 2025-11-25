@@ -23,7 +23,7 @@
                 <Button Content="Users List" Margin="5" 
                 Padding="12 6" FontWeight="Bold" Foreground="White" 
                 Background="#0078D7" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
-                Command="{Binding SubmitUsersList}" 
+                Command="{Binding ButtomUsersList}" 
                       
                         
         />
@@ -33,14 +33,14 @@
                 Padding="12 6" FontWeight="Bold" Foreground="White" 
                 Background="#107C10" BorderBrush="#0B5C0B" BorderThickness="1" Cursor="Hand"
                
-                Command="{Binding SubmitLogOut}"
+                Command="{Binding ButtomLogOut}"
         />
 
                 <!-- New Task button -->
                 <Button Content="New Task" Margin="5" 
                 Padding="14 8" FontWeight="Bold" Foreground="White" 
                 Background="#E81123" BorderBrush="#B50D1E" BorderThickness="1" Cursor="Hand"
-                Command="{Binding SubmitCreateTask}"
+                Command="{Binding ButtomCreateTask}"
         />
             </StackPanel>
 
