@@ -16,10 +16,12 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
     public class CreateTaskCommand : CommandBase
     {
         private CreateTaskViewModel _viewModel;
+        private NavigationStore _navigationStore;
 
-        public CreateTaskCommand(CreateTaskViewModel viewModel)
+        public CreateTaskCommand(CreateTaskViewModel viewModel ,NavigationStore navigationStore)
         {
             _viewModel = viewModel;
+            _navigationStore = navigationStore;
         }
 
         public override void Execute(object parameter)
@@ -53,6 +55,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 
                         db.TasksRepository.AddTask(task);
                         db.Save();
+                        _navigationStore.CurrentViewModel = new MainPanleViewModel(_navigationStore);
                     }
                 }
                 catch

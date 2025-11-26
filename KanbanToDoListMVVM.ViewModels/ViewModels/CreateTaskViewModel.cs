@@ -91,9 +91,9 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public ICommand SubmitAddTask { get; }
 
         
-        public CreateTaskViewModel()
+        public CreateTaskViewModel(NavigationStore navigationStore)
         {
-            SubmitAddTask = new CreateTaskCommand(this);
+            SubmitAddTask = new CreateTaskCommand(this,navigationStore);
             LoadUsers();
         }
 
