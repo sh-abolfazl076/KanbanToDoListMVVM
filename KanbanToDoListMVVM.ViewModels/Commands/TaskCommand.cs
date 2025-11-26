@@ -24,7 +24,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
         {
             if (parameter is Tasks task)
             {
-                _navigationStore.CurrentViewModel = new TaskViewModel(task);
+                _navigationStore.CurrentViewModel = new TaskViewModel(task,_navigationStore);
             }
         }
     }

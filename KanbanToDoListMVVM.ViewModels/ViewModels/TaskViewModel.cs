@@ -1,8 +1,10 @@
 ﻿// System
-using System.Windows.Input;
-
 // Internal
 using KanbanToDoListMVVM.Models.Models;
+using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
+using KanbanToDoListMVVM.ViewModels.Stores;
+using System.Windows.Input;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
@@ -39,13 +41,15 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         ////
 
         public ICommand EditButtom{ get; }
-        public ICommand ColseButtom { get; }
+        public ICommand BackButtom { get; }
         public ICommand RemoveButtom { get; }
 
-        public TaskViewModel(Tasks task)
+        public TaskViewModel(Tasks task ,NavigationStore navigationStore)
         {
             TxtTitleTask = task.Title;
             TxtInfoTask = task.Description;
+           
+            BackButtom = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
         }
 
     }
