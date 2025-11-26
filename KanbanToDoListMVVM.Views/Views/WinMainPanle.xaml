@@ -66,47 +66,112 @@
                 <!-- ToDo -->
                 <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
-                        <TextBlock Text="ToDo" FontWeight="Bold" FontSize="14" 
-                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
-                        <StackPanel x:Name="PanelToDo"/>
+                        <TextBlock Text="ToDo" FontWeight="Bold" FontSize="14"
+                            DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
+
+                        <ItemsControl ItemsSource="{Binding ToDoTasks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                            Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
+                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                     </DockPanel>
                 </Border>
-
+               
+                
                 <!-- Doing -->
                 <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
-                        <TextBlock Text="Doing" FontWeight="Bold" FontSize="14" 
-                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
-                        <StackPanel x:Name="PanelDoing"/>
+                        <TextBlock Text="Doing" FontWeight="Bold" FontSize="14"
+                            DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
+
+                        <ItemsControl ItemsSource="{Binding DoingTasks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                            Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
+                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                     </DockPanel>
                 </Border>
 
                 <!-- Review -->
                 <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
-                        <TextBlock Text="Review" FontWeight="Bold" FontSize="14" 
-                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
-                        <StackPanel x:Name="PanelReview"/>
+                        <TextBlock Text="Review" FontWeight="Bold" FontSize="14"
+                            DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
+
+                        <ItemsControl ItemsSource="{Binding ReviewTasks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                            Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
+                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                     </DockPanel>
                 </Border>
+
 
                 <!-- Done -->
                 <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
-                        <TextBlock Text="Done" FontWeight="Bold" FontSize="14" 
-                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
-                        <StackPanel x:Name="PanelDone"/>
+                        <TextBlock Text="Done" FontWeight="Bold" FontSize="14"
+                            DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
+
+                        <ItemsControl ItemsSource="{Binding DoneTasks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                            Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
+                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                     </DockPanel>
                 </Border>
 
                 <!-- Cancelled -->
                 <Border Grid.Column="4" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
-                        <TextBlock Text="Cancelled" FontWeight="Bold" FontSize="14" 
-                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
-                        <StackPanel x:Name="PanelCancelled"/>
+                        <TextBlock Text="Cancelled" FontWeight="Bold" FontSize="14"
+                            DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
+
+                        <ItemsControl ItemsSource="{Binding CancelledTasks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                            Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
+                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                     </DockPanel>
                 </Border>
+                
+                
+                
             </Grid>
         </ScrollViewer>
     </DockPanel>
