@@ -50,6 +50,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             TxtInfoTask = task.Description;
            
             BackButtom = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
+            RemoveButtom = new RemoveTaskCommand(task, navigationStore);
         }
 
     }
