@@ -57,6 +57,7 @@
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\SingUpCommand.cs" />
+    <Compile Include="Commands\TaskCommand.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\ApplicationStore.cs" />
     <Compile Include="Stores\ConnectionInfo.cs" />

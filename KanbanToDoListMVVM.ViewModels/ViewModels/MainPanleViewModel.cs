@@ -44,9 +44,27 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
+
+        private string _titleButtom;
+        public string TitleButtom
+        {
+            get
+            {
+                return _titleButtom;
+            }
+            set
+            {
+                _titleButtom = value;
+                OnPropertyChanged(nameof(_titleButtom));
+            }
+        }
+        ////
+
+
         public ICommand ButtomUsersList { get; }
         public ICommand ButtomLogOut { get; }
         public ICommand ButtomCreateTask { get; }
+        public ICommand TaskClickCommand { get; }
 
 
 
@@ -54,7 +72,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         {
             ButtomLogOut = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
             ButtomCreateTask = new NavigateCommand<CreateTaskViewModel>(new NavigationService<CreateTaskViewModel>(navigationStore, () => new CreateTaskViewModel(navigationStore)));
-
+            TaskClickCommand = new TaskCommand(this, navigationStore);
             ReloadTasks();
 
         }

@@ -72,7 +72,7 @@
                         <ItemsControl ItemsSource="{Binding ToDoTasks}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                    <Button Content="{Binding TitleButtom}" Width="100" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
                                             Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">

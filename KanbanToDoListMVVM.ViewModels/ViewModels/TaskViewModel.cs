@@ -1,9 +1,8 @@
 ﻿// System
+using System.Windows.Input;
 
 // Internal
-
-
-using System.Windows.Input;
+using KanbanToDoListMVVM.Models.Models;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
@@ -43,9 +42,10 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public ICommand ColseButtom { get; }
         public ICommand RemoveButtom { get; }
 
-        public TaskViewModel()
+        public TaskViewModel(Tasks task)
         {
-
+            TxtTitleTask = task.Title;
+            TxtInfoTask = task.Description;
         }
 
     }
