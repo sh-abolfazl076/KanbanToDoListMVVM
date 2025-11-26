@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="KanbanToDoListMVVM.Views.Views.WinTask"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KanbanToDoListMVVM.Views.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title -->
+            <RowDefinition Height="*"/>
+            <!-- Info -->
+            <RowDefinition Height="Auto"/>
+            <!-- Stage + Buttons -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <!-- ComboBox -->
+            <ColumnDefinition Width="Auto"/>
+            <!-- Buttons -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Title TextBox -->
+        <TextBox Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,10" Height="30" 
+                 Text ="{Binding TxtTitleTask , UpdateSourceTrigger=PropertyChanged }"/>
+
+        <!-- Info TextBox -->
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2" AcceptsReturn="True" 
+                 TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                 Margin="0,0,0,10" 
+                 Text ="{Binding TxtInfoTask , UpdateSourceTrigger=PropertyChanged }"/>
+
+        <!-- ComboBox -->
+        <ComboBox Grid.Row="2" Grid.Column="0" Name="comboBoxStage" Height="30" Margin="0,0,10,0">
+            <ComboBoxItem Content="ToDo" Name="ToDoStage"/>
+            <ComboBoxItem Content="Doing" Name="DoingStage"/>
+            <ComboBoxItem Content="Review" Name="ReviewStage"/>
+            <ComboBoxItem Content="Done" Name="DoneStage"/>
+            <ComboBoxItem Content="Cancelled" Name="CancelledStage"/>
+        </ComboBox>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Edit" Width="80" Height="30" 
+                    Background="#28A745" Foreground="White" FontWeight="Bold" Margin="0,0,10,0"
+                    Command="{Binding EditButtom}"/>
+            <Button Content="Close" Width="80" Height="30" 
+                    Background="#17A2B8" Foreground="White" FontWeight="Bold" Margin="0,0,10,0" 
+                    Command="{Binding ColseButtom}"/>
+            <Button Content="Remove" Width="80" Height="30" 
+                    Background="#E91E63" Foreground="White" FontWeight="Bold" 
+                    Command="{Binding RemoveButtom}"  />
+        </StackPanel>
+    </Grid>
+    
+</UserControl>

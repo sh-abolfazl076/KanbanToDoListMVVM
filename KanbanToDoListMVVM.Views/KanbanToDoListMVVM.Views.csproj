@@ -86,6 +86,9 @@
     <Compile Include="Views\WinSingUp.xaml.cs">
       <DependentUpon>WinSingUp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WinTask.xaml.cs">
+      <DependentUpon>WinTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WinUsersList.xaml.cs">
       <DependentUpon>WinUsersList.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WinSingUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WinTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
