@@ -11,25 +11,29 @@
         Title="MainWindow" SizeToContent="WidthAndHeight" >
 
     <Grid>
-        <ContentControl Content="{Binding CurrentViewModel}">
+        <ContentControl Content="{Binding CurrentViewModel}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
-                    <view:WinLogin  Width="330" Height="350" />
+                    <view:WinLogin />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:ConnectionViewModel}">
-                    <view:WinConnection  Width="445" Height="400" />
+                    <view:WinConnection/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:SingUpViewModel}">
-                    <view:WinSingUp  Width="370" Height="350" />
+                    <view:WinSingUp/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:MainPanleViewModel}">
-                    <view:WinMainPanle  Width="600" Height="500" />
+                    <view:WinMainPanle/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:CreateTaskViewModel}">
-                    <view:WinCreateTask  Width="400" Height="600" />
+                    <view:WinCreateTask/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:TaskViewModel}">
-                    <view:WinTask  Width="300" Height="400" />
+                    <view:WinTask />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
