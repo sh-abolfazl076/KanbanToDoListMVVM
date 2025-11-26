@@ -37,17 +37,20 @@
                 <StackPanel Margin="10">
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Title :" Width="50" VerticalAlignment="Center"/>
-                        <TextBox Margin="5" Width="235" Name="txtTitle"/>
+                        <TextBox Margin="5" Width="235"
+                                 Text ="{Binding TxtTitleAddTask , UpdateSourceTrigger=PropertyChanged }"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Duration :" Width="50" VerticalAlignment="Center"/>
-                        <TextBox Margin="5" Width="30" x:Name="txtDuration"/>
+                        <TextBox Margin="5" Width="30"
+                                 Text ="{Binding TxtDurationAddTask , UpdateSourceTrigger=PropertyChanged }"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Info :" Width="50" VerticalAlignment="Top"/>
-                        <TextBox Margin="5" Width="235" Height="200" TextWrapping="Wrap" AcceptsReturn="True" Name="txtInfo"/>
+                        <TextBox Margin="5" Width="235" Height="200" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Text ="{Binding TxtInfoAddTask , UpdateSourceTrigger=PropertyChanged }"/>
                     </StackPanel>
 
 
