@@ -54,6 +54,7 @@
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\ConnectionCommand.cs" />
     <Compile Include="Commands\CreateTaskCommand.cs" />
+    <Compile Include="Commands\EditTaskCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RemoveTaskCommand.cs" />
