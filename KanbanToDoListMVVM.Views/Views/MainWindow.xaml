@@ -25,6 +25,9 @@
                 <DataTemplate DataType="{x:Type viewModels:MainPanleViewModel}">
                     <view:WinMainPanle  Width="600" Height="500" />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:CreateTaskViewModel}">
+                    <view:WinCreateTask  Width="400" Height="600" />
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Grid>

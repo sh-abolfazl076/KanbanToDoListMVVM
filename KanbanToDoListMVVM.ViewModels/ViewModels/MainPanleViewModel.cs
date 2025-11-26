@@ -49,6 +49,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public MainPanleViewModel(NavigationStore navigationStore) 
         {
             ButtomLogOut = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
+            ButtomCreateTask = new NavigateCommand<CreateTaskViewModel>(new NavigationService<CreateTaskViewModel>(navigationStore, () => new CreateTaskViewModel()));
         }
     }
 }
