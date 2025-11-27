@@ -68,6 +68,7 @@
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="ViewModels\ConnectionViewModel.cs" />
     <Compile Include="ViewModels\CreateTaskViewModel.cs" />
+    <Compile Include="ViewModels\EditUserViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainPanleViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

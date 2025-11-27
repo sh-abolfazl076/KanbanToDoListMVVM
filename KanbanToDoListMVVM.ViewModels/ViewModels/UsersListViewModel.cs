@@ -31,7 +31,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         {
             LoadData();
             UserRemove = new UserRemoveCommand(this, navigationStore);
-            
+            UserEdit = new EditUserViewModel(this , navigationStore);
         }
 
 
