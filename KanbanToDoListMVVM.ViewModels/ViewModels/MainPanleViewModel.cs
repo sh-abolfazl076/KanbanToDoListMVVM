@@ -1,14 +1,14 @@
 ﻿// System
-using System.Linq;
-using System.Windows.Input;
-using System.Collections.ObjectModel;
-
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
