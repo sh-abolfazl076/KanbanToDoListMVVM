@@ -5,6 +5,7 @@ using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
+using KanbanToDoListMVVM.ViewModels.Utilities;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -71,10 +72,22 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public MainPanleViewModel(NavigationStore navigationStore) 
         {
             ButtomLogOut = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
-            ButtomCreateTask = new NavigateCommand<CreateTaskViewModel>(new NavigationService<CreateTaskViewModel>(navigationStore, () => new CreateTaskViewModel(navigationStore)));
-            ButtomUsersList = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
             TaskClickCommand = new TaskCommand(this, navigationStore);
             ReloadTasks();
+
+            using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
+            {
+                if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.AddTask) != null)
+                {
+                    ButtomCreateTask = new NavigateCommand<CreateTaskViewModel>(new NavigationService<CreateTaskViewModel>(navigationStore, () => new CreateTaskViewModel(navigationStore)));
+                }
+
+                if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.AccessUsers) != null)
+                {
+                    ButtomUsersList = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));  
+                }
+            }
+
 
         }
 

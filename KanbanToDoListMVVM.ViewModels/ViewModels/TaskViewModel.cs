@@ -1,9 +1,11 @@
 ﻿// System
 // Internal
+using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
+using KanbanToDoListMVVM.ViewModels.Utilities;
 using System.Windows.Input;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
@@ -69,8 +71,22 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             TxtInfoTask = task.Description;
            
             BackButtom = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
-            RemoveButtom = new RemoveTaskCommand(task, navigationStore);
-            EditButtom = new EditTaskCommand(task ,this, navigationStore);
+
+            using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
+            {
+                if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.ModifyTask) != null)
+                {
+                    EditButtom = new EditTaskCommand(task ,this, navigationStore);  
+                }
+
+
+                if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.RemoveTask) != null)
+                {
+                    RemoveButtom = new RemoveTaskCommand(task, navigationStore);
+                }
+            }
+
+
         }
 
     }
