@@ -1,9 +1,11 @@
 ﻿// System
-using System.Windows.Input;
-
+using KanbanToDoListMVVM.Models.Context;
+using KanbanToDoListMVVM.ViewModels.Commands;
 // Internal
 using KanbanToDoListMVVM.ViewModels.Stores;
-using KanbanToDoListMVVM.ViewModels.Commands;
+using System;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 
 
@@ -85,6 +87,9 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
                 OnPropertyChanged(nameof(UpdateTask));
             }
         }
+
+        private int _userId;
+
         ////
 
 
@@ -92,7 +97,43 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 
         public PermissionUserViewModel(int userId ,NavigationStore navigationStore)
         {
+            _userId = userId;
             SubmitPermssionUser = new PermissionUserCommand(this,userId,navigationStore);
+            LoadUserPermissions();
+        }
+
+
+
+        /// <summary>
+        /// Reads Permissions of User from Database and Sets CheckBox Values
+        /// </summary>
+        private void LoadUserPermissions()
+        {
+            var permissionsMap = new Dictionary<string, Action<bool>>
+            {
+                { "AddTask",v => AddTask = v },
+                { "RemoveTask",v => DeleteTask = v },
+                { "ModifyTask",v => UpdateTask = v },
+                { "AccessUsers",v => ManageUserAccess = v }
+            };
+            
+            try
+            {
+                using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
+                {
+                    foreach (var permission in permissionsMap)
+                    {
+                        int permId = db.PermissionsRepository.GetPermissionIdByTitle(permission.Key);
+                        var existing = db.UserPermissionsRepository.CheckPermission(_userId, permId);
+
+                        permission.Value(existing != null); 
+                    }
+                }
+            }
+            catch
+            {
+                System.Windows.MessageBox.Show("Database Error!");
+            }
         }
 
     }

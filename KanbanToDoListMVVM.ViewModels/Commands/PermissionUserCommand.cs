@@ -30,8 +30,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             {
                 (_viewModel.AddTask, "AddTask"),
                 (_viewModel.DeleteTask, "RemoveTask"),
-                (_viewModel.ManageUserAccess, "ModifyTask"),
-                (_viewModel.UpdateTask, "AccessUsers"),
+                (_viewModel.ManageUserAccess, "AccessUsers"),
+                (_viewModel.UpdateTask, "ModifyTask"),
             };
 
             using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
@@ -55,6 +55,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 
                             db.UserPermissionsRepository.AddUserPermission(access);
                             db.Save();
+
                         }
                     }
                     else 
@@ -65,6 +66,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                             db.Save();
                         }
                     }
+                    _navigationStore.CurrentViewModel = new UsersListViewModel(_navigationStore);
+
                 }
             }
 
