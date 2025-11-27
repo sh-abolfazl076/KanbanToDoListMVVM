@@ -1,12 +1,11 @@
-﻿using KanbanToDoListMVVM.Models.Models;
+﻿// System
+using System.Windows;
+
+// Internal
+using KanbanToDoListMVVM.Models.Context;
+using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
 {
@@ -24,8 +23,20 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
         {
             if (parameter is Users user)
             {
-                MessageBox.Show($"{user.ID}");
-                //_navigationStore.CurrentViewModel = new TaskViewModel(task, _navigationStore);
+                try
+                {
+                    using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
+                    {
+                        db.UserPermissionsRepository.RemoveUserPermissionByUserId(user.ID);
+                        db.UsersRepository.RemoveUserById(user.ID);
+                        db.Save();
+                        _navigationStore.CurrentViewModel = new UsersListViewModel(_navigationStore);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show($"The user has a record and cannot be deleted.");
+                }
             }
         }
     }
