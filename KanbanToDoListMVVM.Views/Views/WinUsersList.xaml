@@ -30,7 +30,7 @@
 
 
                 <!-- Users -->
-                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1,1,0,1" Margin="3,3,0,3">
+                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
                         <TextBlock Text="Users" FontWeight="Bold" FontSize="14"
                             DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
@@ -40,7 +40,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="130" Height="45" Background="#17A2B8"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.UserClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -51,7 +51,7 @@
                 </Border>
 
                 <!-- Permissions -->
-                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,0,1" Margin="0,3,0,3">
+                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
                         <TextBlock Text="Permissions" FontWeight="Bold" FontSize="14"
                             DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
@@ -59,9 +59,9 @@
                         <ItemsControl ItemsSource="{Binding PermissionsUserList}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#28A745"
+                                    <Button Content="{Binding Title}" Width="80" Height="45" Background="#28A745"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.UserClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -73,7 +73,7 @@
 
 
                 <!-- Edit -->
-                <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,1,0,1" Margin="0,3,0,3">
+                <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
                         <TextBlock Text="Edit" FontWeight="Bold" FontSize="14"
                             DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
@@ -81,9 +81,9 @@
                         <ItemsControl ItemsSource="{Binding EditUserList}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#FFC107"
+                                    <Button Content="{Binding Title}" Width="80" Height="45" Background="#FFC107"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.UserClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -95,7 +95,7 @@
 
 
                 <!-- Remove -->
-                <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,1,0,1" Margin="0,3,0,3">
+                <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="3">
                     <DockPanel>
                         <TextBlock Text="Remove" FontWeight="Bold" FontSize="14"
                             DockPanel.Dock="Top" TextAlignment="Center" Margin="5"/>
@@ -103,9 +103,9 @@
                         <ItemsControl ItemsSource="{Binding RemoveUserList}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
+                                    <Button Content="{Binding Title}" Width="80" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.UserRemove,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>

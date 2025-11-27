@@ -31,5 +31,6 @@ namespace KanbanToDoListMVVM.Models.Models
         public virtual ICollection<Tasks> Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPermissions> UserPermissions { get; set; }
+        public string Title { get; set; }
     }
 }

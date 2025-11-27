@@ -35,6 +35,9 @@
                 <DataTemplate DataType="{x:Type viewModels:TaskViewModel}">
                     <view:WinTask />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:UsersListViewModel}">
+                    <view:WinUsersList />
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Grid>
