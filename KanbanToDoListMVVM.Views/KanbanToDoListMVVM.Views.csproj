@@ -86,6 +86,9 @@
     <Compile Include="Views\WinMainPanle.xaml.cs">
       <DependentUpon>WinMainPanle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WinPermissionUser.xaml.cs">
+      <DependentUpon>WinPermissionUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WinSingUp.xaml.cs">
       <DependentUpon>WinSingUp.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WinMainPanle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WinPermissionUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
