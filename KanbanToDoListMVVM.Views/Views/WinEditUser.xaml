@@ -36,6 +36,7 @@
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+            <Button Command="{Binding BackToUserList}" Content="Back"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4C9F50" Foreground="White" />
             <Button Command="{Binding SubmitUserEdit}" Content="Login"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" />
         </StackPanel>
 

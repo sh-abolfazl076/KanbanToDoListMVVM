@@ -55,11 +55,13 @@
     <Compile Include="Commands\ConnectionCommand.cs" />
     <Compile Include="Commands\CreateTaskCommand.cs" />
     <Compile Include="Commands\EditTaskCommand.cs" />
+    <Compile Include="Commands\EditUserCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RemoveTaskCommand.cs" />
     <Compile Include="Commands\SingUpCommand.cs" />
     <Compile Include="Commands\TaskCommand.cs" />
+    <Compile Include="Commands\UserCommand.cs" />
     <Compile Include="Commands\UserRemoveCommand.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\ApplicationStore.cs" />

@@ -3,6 +3,9 @@
 // Internal
 
 
+using KanbanToDoListMVVM.Models.Models;
+using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using System.Windows.Input;
 
@@ -15,7 +18,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         {
             get
             {
-                return _txtTitleUserEdit = "hjhh";
+                return _txtTitleUserEdit = "Edit User";
             }
             set
             {
@@ -56,13 +59,15 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         ////
         
         public ICommand SubmitUserEdit { get; }
+        public ICommand BackToUserList { get; }
 
 
 
-
-        public EditUserViewModel(UsersListViewModel viewModel, NavigationStore navigationStore)
+        public EditUserViewModel(int userId, NavigationStore navigationStore)
         {
-            SubmitUserEdit = new EditUserCommand(viewModel , navigationStore)
+
+            BackToUserList = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
+            SubmitUserEdit = new EditUserCommand(this,userId, navigationStore);
         }
 
     }

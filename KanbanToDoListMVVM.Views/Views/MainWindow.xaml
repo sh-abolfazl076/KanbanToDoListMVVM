@@ -38,6 +38,9 @@
                 <DataTemplate DataType="{x:Type viewModels:UsersListViewModel}">
                     <view:WinUsersList />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:EditUserViewModel}">
+                    <view:WinEditUserViewModel />
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Grid>
