@@ -72,7 +72,7 @@
                         <ItemsControl ItemsSource="{Binding ToDoTasks}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding TitleButtom}" Width="100" Height="45" Background="#E91E63"
+                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
                                             Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
@@ -94,7 +94,7 @@
                         <ItemsControl ItemsSource="{Binding DoingTasks}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
                                             Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
@@ -115,7 +115,7 @@
                         <ItemsControl ItemsSource="{Binding ReviewTasks}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
                                             Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
@@ -137,7 +137,7 @@
                         <ItemsControl ItemsSource="{Binding DoneTasks}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
                                             Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
@@ -158,7 +158,7 @@
                         <ItemsControl ItemsSource="{Binding CancelledTasks}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Content="{Binding Title}" Width="100" Height="45" Background="#E91E63"
+                                    <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
                                             Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
