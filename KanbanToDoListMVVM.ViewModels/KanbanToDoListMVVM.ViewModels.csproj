@@ -58,6 +58,8 @@
     <Compile Include="Commands\EditUserCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="Commands\GetUserIdForPermissionCommand.cs" />
+    <Compile Include="Commands\PermissionUserCommand.cs" />
     <Compile Include="Commands\RemoveTaskCommand.cs" />
     <Compile Include="Commands\SingUpCommand.cs" />
     <Compile Include="Commands\TaskCommand.cs" />

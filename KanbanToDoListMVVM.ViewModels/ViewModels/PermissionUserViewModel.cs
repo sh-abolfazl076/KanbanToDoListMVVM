@@ -2,6 +2,8 @@
 using System.Windows.Input;
 
 // Internal
+using KanbanToDoListMVVM.ViewModels.Stores;
+using KanbanToDoListMVVM.ViewModels.Commands;
 
 
 
@@ -88,9 +90,9 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 
         public ICommand SubmitPermssionUser { get; }
 
-        public PermissionUserViewModel()
+        public PermissionUserViewModel(int userId ,NavigationStore navigationStore)
         {
-            SubmitPermssionUser = new PermissionUserCommand();
+            SubmitPermssionUser = new PermissionUserCommand(this,userId,navigationStore);
         }
 
     }

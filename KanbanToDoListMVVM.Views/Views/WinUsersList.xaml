@@ -61,7 +61,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="80" Height="45" Background="#28A745"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.UserClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.PermissionsCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>

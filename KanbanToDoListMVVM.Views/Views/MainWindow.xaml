@@ -41,6 +41,9 @@
                 <DataTemplate DataType="{x:Type viewModels:EditUserViewModel}">
                     <view:WinEditUserViewModel />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:PermissionUserViewModel}">
+                    <view:WinPermissionUser />
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Grid>
