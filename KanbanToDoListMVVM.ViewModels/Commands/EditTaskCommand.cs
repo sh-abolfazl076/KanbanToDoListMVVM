@@ -29,7 +29,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
         {
             int selectedIndex = _ViewModel.SelectedIndex;
             
-            bool IsTaskFormValid = Validation.IsTaskFormValid(_ViewModel.TxtTitleTask, _ViewModel.TxtInfoTask, selectedIndex);
+            bool IsTaskFormValid = Validation.IsTaskFormValid(_ViewModel.TaskTitle, _ViewModel.TaskDescription, selectedIndex);
             if (IsTaskFormValid)
             {
                 try
@@ -39,8 +39,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                         var task = db.TasksRepository.GetTaskById(_task.ID);
                         if (task != null)
                         {
-                            task.Title = _ViewModel.TxtTitleTask;
-                            task.Description = _ViewModel.TxtInfoTask;
+                            task.Title = _ViewModel.TaskTitle;
+                            task.Description = _ViewModel.TaskDescription;
                             //task.Description = Description;
                             task.UpdatedAt = DateTime.Now;
                             task.StageId = selectedIndex + 1;

@@ -1,4 +1,6 @@
 ﻿// System
+using System.Windows.Input;
+
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
@@ -6,38 +8,31 @@ using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.Utilities;
-using System.Windows.Input;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class TaskViewModel : ViewModelBase
     {
-        private string _txtTitleTask;
-        public string TxtTitleTask
+        private string _taskTitle;
+        public string TaskTitle
         {
-            get
-            {
-                return _txtTitleTask;
-            }
+            get => _taskTitle;
             set
             {
-                _txtTitleTask = value;
-                OnPropertyChanged(nameof(TxtTitleTask));
+                _taskTitle = value;
+                OnPropertyChanged(nameof(TaskTitle));
             }
         }
         ////
         
-        private string _txtInfoTask;
-        public string TxtInfoTask
+        private string _taskDescription;
+        public string TaskDescription
         {
-            get
-            {
-                return _txtInfoTask;
-            }
+            get => _taskDescription;
             set
             {
-                _txtInfoTask  = value;
-                OnPropertyChanged(nameof(TxtInfoTask));
+                _taskDescription = value;
+                OnPropertyChanged(nameof(TaskDescription));
             }
         }
         ////
@@ -59,32 +54,34 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         ////
 
 
+        public ICommand SubmitEditTaskCommand { get; }
+        public ICommand BackToMainPanleCommand { get; }
+        public ICommand RemoveTaskCommand { get; }
 
-
-        public ICommand EditButtom{ get; }
-        public ICommand BackButtom { get; }
-        public ICommand RemoveButtom { get; }
-
+        /// <summary>
+        /// This creates the TaskViewModel and sets the task info and the buttons for edit, delete, and back.
+        /// </summary>
+        /// <param name="task">task data</param>
+        /// <param name="navigationStore">change pages in the app</param>
         public TaskViewModel(Tasks task ,NavigationStore navigationStore)
         {
-            TxtTitleTask = task.Title;
-            TxtInfoTask = task.Description;
-           
-            BackButtom = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
+            TaskTitle = task.Title;
+            TaskDescription = task.Description;
+
+            BackToMainPanleCommand = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
 
             using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
             {
                 if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.ModifyTask) != null)
                 {
-                    EditButtom = new EditTaskCommand(task ,this, navigationStore);  
+                    SubmitEditTaskCommand = new EditTaskCommand(task ,this, navigationStore);  
                 }
-
 
                 if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.RemoveTask) != null)
                 {
-                    RemoveButtom = new RemoveTaskCommand(task, navigationStore);
+                    RemoveTaskCommand = new RemoveTaskCommand(task, navigationStore);
                 }
-            }
+            }//End
 
 
         }

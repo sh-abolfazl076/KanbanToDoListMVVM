@@ -25,13 +25,13 @@
 
         <!-- Title TextBox -->
         <TextBox Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,10" Height="30" 
-                 Text ="{Binding TxtTitleTask , UpdateSourceTrigger=PropertyChanged }"/>
+                 Text ="{Binding TaskTitle , UpdateSourceTrigger=PropertyChanged }"/>
 
         <!-- Info TextBox -->
         <TextBox Grid.Row="1" Grid.ColumnSpan="2" AcceptsReturn="True" 
                  TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
                  Margin="0,0,0,10" 
-                 Text ="{Binding TxtInfoTask , UpdateSourceTrigger=PropertyChanged }"/>
+                 Text ="{Binding TaskDescription , UpdateSourceTrigger=PropertyChanged }"/>
 
         <!-- ComboBox -->  
         <ComboBox Grid.Row="2" Grid.Column="0" Height="30" Margin="0,0,10,0"  SelectedValuePath="Content"
@@ -45,15 +45,15 @@
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Edit" Width="80" Height="30" 
+            <Button Content="Save Change" Width="80" Height="30" 
                     Background="#28A745" Foreground="White" FontWeight="Bold" Margin="0,0,10,0"
-                    Command="{Binding EditButtom}"/>
+                    Command="{Binding SubmitEditTaskCommand}"/>
             <Button Content="Back" Width="80" Height="30" 
                     Background="#17A2B8" Foreground="White" FontWeight="Bold" Margin="0,0,10,0" 
-                    Command="{Binding BackButtom}"/>
+                    Command="{Binding BackToMainPanleCommand}"/>
             <Button Content="Remove" Width="80" Height="30" 
                     Background="#E91E63" Foreground="White" FontWeight="Bold" 
-                    Command="{Binding RemoveButtom}"  />
+                    Command="{Binding RemoveTaskCommand}"  />
         </StackPanel>
     </Grid>
     
