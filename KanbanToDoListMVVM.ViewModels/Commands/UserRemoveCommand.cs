@@ -1,11 +1,11 @@
 ﻿// System
-using System.Windows;
-
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
 {
@@ -19,7 +19,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             _ViewModel = viewModel;
             _navigationStore = navigationStore;
         }
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             if (parameter is Users user)
             {
@@ -35,7 +35,10 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                 }
                 catch
                 {
-                    MessageBox.Show($"The user has a record and cannot be deleted.");
+                    _ViewModel.RemoveUserLabal = "";
+                    await Task.Delay(1000);
+                    _ViewModel.RemoveUserLabal = "The user has a record and cannot be deleted ..";
+
                 }
             }
         }

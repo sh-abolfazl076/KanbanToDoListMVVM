@@ -1,47 +1,63 @@
 ﻿// System
+using System.Linq;
+using System.Windows.Input;
+using System.Collections.ObjectModel;
+
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows.Input;
 
 
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class UsersListViewModel : ViewModelBase
-    {  
-
+    {
+        
+        private string _removeUserLabal;
+        public string RemoveUserLabal
+        {
+            get => _removeUserLabal;
+            set
+            {
+                _removeUserLabal = value;
+                OnPropertyChanged(nameof(RemoveUserLabal));
+            }
+        }
+        ////
         public ObservableCollection<Users> UsersList { get; set; } = new ObservableCollection<Users>();
         public ObservableCollection<Users> PermissionsUserList { get; set; } = new ObservableCollection<Users>();
         public ObservableCollection<Users> EditUserList { get; set; } = new ObservableCollection<Users>();
         public ObservableCollection<Users> RemoveUserList { get; set; } = new ObservableCollection<Users>();
 
 
+        public ICommand BackToMainPanleCommand { get; }
+        public ICommand UserEditCommand { get; }
+        public ICommand PermissionCommand { get; }
+        public ICommand UserRemoveCommand { get; }
 
-        public ICommand SubmitAddUser { get; }
-        public ICommand UserRemove { get; }
-        public ICommand UserEdit{ get; }
-        public ICommand PermissionsCommand { get; }
-        public ICommand BackToMainPanleButtom { get; }
-        
 
+        /// <summary>
+        /// This creates the UsersListViewModel and sets the buttons for remove, edit, permissions, and back.
+        /// </summary>
+        /// <param name="navigationStore">change pages in the app</param>
         public UsersListViewModel(NavigationStore navigationStore)
         {
             LoadData();
-            UserRemove = new UserRemoveCommand(this,navigationStore);
-            UserEdit = new UserCommand(this, navigationStore);
-            PermissionsCommand = new GetUserIdForPermissionCommand(this, navigationStore);
-            BackToMainPanleButtom = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
+            UserRemoveCommand = new UserRemoveCommand(this,navigationStore);
+            UserEditCommand = new UserCommand(this, navigationStore);
+            PermissionCommand = new GetUserIdForPermissionCommand(this, navigationStore);
+            BackToMainPanleCommand = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
 
 
-        }
+        }//End
 
-
+        /// <summary>
+        /// This loads all users from the database
+        /// </summary>
         private void LoadData()
         {
             using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
@@ -85,7 +101,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
                     });
                 }
             }
-        }
+        }//End
 
     }
 }

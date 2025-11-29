@@ -12,10 +12,12 @@
 
             <!-- Back -->
             <Button Content="Back" Margin="5" 
-            Padding="12 6" FontWeight="Bold" Foreground="White" 
-            Background="#17A2B8" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
-            Command="{Binding BackToMainPanleButtom}"
-            />
+                    Padding="12 6" FontWeight="Bold" Foreground="White" 
+                    Background="#17A2B8" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
+                    Command="{Binding BackToMainPanleCommand}"
+                    />
+            <Label FontWeight="Bold" FontSize="16" FontFamily="B Titr" Margin="0,0,0,0" Foreground="#DC3545" Content="{Binding RemoveUserLabal}"/>
+            
 
         </StackPanel>
 
@@ -41,7 +43,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="130" Height="45" Background="#17A2B8"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.UserClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.UserCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -62,7 +64,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="80" Height="45" Background="#28A745"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.PermissionsCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.PermissionCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -84,7 +86,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="80" Height="45" Background="#FFC107"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.UserEdit,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.UserEditCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -106,7 +108,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="80" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.UserRemove,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.UserRemoveCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
