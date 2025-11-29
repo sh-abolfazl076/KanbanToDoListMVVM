@@ -65,11 +65,11 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         {
             int userId = ApplicationStore.Instance.UserId;
 
-            LoadTask(ToDoTasks, userId, 1); // ToDo
-            LoadTask(DoingTasks, userId, 2);// Doing
-            LoadTask(ReviewTasks, userId, 3);// Review
-            LoadTask(DoneTasks, userId, 4);// Done
-            LoadTask(CancelledTasks, userId, 5);// Cancelled
+            LoadTask(ToDoTasks, userId,TaskStages.ToDo);
+            LoadTask(DoingTasks, userId,TaskStages.Doing);
+            LoadTask(ReviewTasks, userId,TaskStages.Review);
+            LoadTask(DoneTasks, userId,TaskStages.Done);
+            LoadTask(CancelledTasks, userId,TaskStages.Cancelled);
         }//End
 
 
