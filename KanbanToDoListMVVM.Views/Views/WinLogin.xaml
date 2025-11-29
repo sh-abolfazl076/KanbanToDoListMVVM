@@ -17,28 +17,29 @@
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <TextBlock Text="Welcome !"  FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+        <TextBlock Text="{Binding Title}"  FontSize="22" 
+                   FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
 
         <!-- Inputs -->
         <StackPanel Grid.Row="1" Margin="10,5,10,5" VerticalAlignment="Top" >
 
             <Label Content="Username" />
             <TextBox Height="25" Margin="0,0,0,10"
-                     Text ="{Binding TxtUsername , UpdateSourceTrigger=PropertyChanged }"
+                     Text ="{Binding Username , UpdateSourceTrigger=PropertyChanged }"
                      />
 
-            <Label Content="PassWord" />
+            <Label Content="Password" />
             <TextBox Height="25" Margin="0,0,0,10"
-                         Text ="{Binding TxtPassword , UpdateSourceTrigger=PropertyChanged }"
+                         Text ="{Binding Password , UpdateSourceTrigger=PropertyChanged }"
                          />
 
         </StackPanel>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Command="{Binding SubmitConnection}" Content="Connection Check"  Margin="0,0,10,0" Width="110" Height="30" FontWeight="Bold" Background="#FF9800" Foreground="White" />
-            <Button Command="{Binding SubmitSingup}" Content="Sing Up"  Width="75" Margin="8,0,10,0" Height="30" FontWeight="Bold" Background="#2196F3" Foreground="White" />
-            <Button Command="{Binding SubmitLogin}" Content="Login"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" />
+            <Button Command="{Binding ConnectionCommand}" Content="Connection Check"  Margin="0,0,10,0" Width="110" Height="30" FontWeight="Bold" Background="#FF9800" Foreground="White" />
+            <Button Command="{Binding SingUpCommand}" Content="Sing Up"  Width="75" Margin="8,0,10,0" Height="30" FontWeight="Bold" Background="#2196F3" Foreground="White" />
+            <Button Command="{Binding LoginCommand}" Content="Login"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" />
         </StackPanel>
 
     </Grid>

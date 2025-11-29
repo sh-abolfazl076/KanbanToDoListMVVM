@@ -27,14 +27,14 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 
         public override void Execute(object parameter)
         {
-            bool isUsernameAndPasswordValid = Validation.IsUsernameAndPasswordValid(_ViewModel.TxtUsername, _ViewModel.TxtPassword);
+            bool isUsernameAndPasswordValid = Validation.IsUsernameAndPasswordValid(_ViewModel.Username, _ViewModel.Password);
             if (isUsernameAndPasswordValid)
             {
                 try
                 {
                     using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
                     {
-                        var existingUser = db.UsersRepository.GetUserByUsernameAndPassword(_ViewModel.TxtUsername, _ViewModel.TxtPassword);
+                        var existingUser = db.UsersRepository.GetUserByUsernameAndPassword(_ViewModel.Username, _ViewModel.Password);
 
                         if (existingUser == null)
                         {

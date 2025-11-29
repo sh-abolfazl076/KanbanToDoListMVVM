@@ -1,13 +1,10 @@
 ﻿// System
+using System.Windows.Input;
+
+// Internal
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
-using System.Windows.Input;
-using System.Windows.Navigation;
-
-
-
-// Internal
 
 
 
@@ -15,49 +12,63 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        private string _txtUsername;
-        public string TxtUsername
+        
+        private string _title;
+        public string Title
         {
-            get
-            {
-                return _txtUsername;
-            }
+            get => _title = "Welcome !";
             set
             {
-                _txtUsername = value;
-                OnPropertyChanged(nameof(TxtUsername));
-            }
-        }
-        ////
-       
-        private string _txtPassword;
-        public string TxtPassword
-        {
-            get
-            {
-                return _txtPassword;
-            }
-            set
-            {
-                _txtPassword = value;
-                OnPropertyChanged(nameof(TxtPassword));
+                _title = value;
+                OnPropertyChanged(nameof(Title));
             }
         }
         ////
         
-        public ICommand SubmitConnection { get; }
-        public ICommand SubmitSingup { get; }
-        public ICommand SubmitLogin { get; }
+        private string _username;
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnPropertyChanged(nameof(Username));
+            }
+        }
+        ////
+       
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+        ////
+        
+        public ICommand ConnectionCommand { get; }
+        public ICommand SingUpCommand { get; }
+        public ICommand LoginCommand { get; }
 
+
+        /// <summary>
+        /// This creates the LoginViewModel and sets the commands for navigation and login.
+        /// </summary>
+        /// <param name="navigationStore">switch between pages</param>
         public LoginViewModel(NavigationStore navigationStore)
         {
-            SubmitConnection = new NavigateCommand<ConnectionViewModel>(new NavigationService<ConnectionViewModel>(navigationStore, () => new ConnectionViewModel(navigationStore)));
-            SubmitSingup = new NavigateCommand<SingUpViewModel>(new NavigationService<SingUpViewModel>(navigationStore, () => new SingUpViewModel(navigationStore)));
-            SubmitLogin = new LoginCommand<MainPanleViewModel>(this,new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
+            ConnectionCommand = new NavigateCommand<ConnectionViewModel>
+                (new NavigationService<ConnectionViewModel>(navigationStore, () => new ConnectionViewModel(navigationStore)));
 
-        }
+            SingUpCommand = new NavigateCommand<SingUpViewModel>(
+                new NavigationService<SingUpViewModel>(navigationStore, () => new SingUpViewModel(navigationStore)));
 
-
+            LoginCommand = new LoginCommand<MainPanleViewModel>(this,
+                new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
+        }//End
 
     }
 }
