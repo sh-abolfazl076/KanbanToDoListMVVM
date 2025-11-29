@@ -1,59 +1,52 @@
 ﻿// System
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class CreateTaskViewModel : ViewModelBase
     {
-        private string _txtTitleAddTask;
-        public string TxtTitleAddTask
+        
+        private string _taskTitle;
+        public string TaskTitle
         {
-            get
-            {
-                return _txtTitleAddTask;
-            }
+            get => _taskTitle;
             set
             {
-                _txtTitleAddTask = value;
-                OnPropertyChanged(nameof(TxtTitleAddTask));
+                _taskTitle = value;
+                OnPropertyChanged(nameof(TaskTitle));
             }
         }
         ////
 
-        private string _txtDurationAddTask;
-        public string TxtDurationAddTask
+        private string _taskDuration;
+        public string TaskDuration
         {
-            get
-            {
-                return _txtDurationAddTask;
-            }
+            get => _taskDuration;
             set
             {
-                _txtDurationAddTask = value;
-                OnPropertyChanged(nameof(TxtDurationAddTask));
+                _taskDuration = value;
+                OnPropertyChanged(nameof(TaskDuration));
             }
         }
         ////
 
-        private string _txtInfoAddTask;
-        public string TxtInfoAddTask
+        private string _taskDescription;
+        public string TaskDescription
         {
-            get
-            {
-                return _txtInfoAddTask;
-            }
+            get => _taskDescription;
             set
             {
-                _txtInfoAddTask = value;
-                OnPropertyChanged(nameof(TxtInfoAddTask));
+                _taskDescription = value;
+                OnPropertyChanged(nameof(TaskDescription));
             }
         }
         ////
@@ -83,20 +76,36 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
-        public ObservableCollection<Users> UsersList { get; set; } = new ObservableCollection<Users>();
 
+        private string _checkValidationLabal;
+        public string CheckValidationLabal
+        {
+            get => _checkValidationLabal;
+            set
+            {
+                _checkValidationLabal = value;
+                OnPropertyChanged(nameof(CheckValidationLabal));
+            }
+        }
+        ////
+
+        public ObservableCollection<Users> UsersList { get; set; } = new ObservableCollection<Users>();
         
         public ICommand SubmitAddTask { get; }
 
-        public ICommand ReturnToMainPanelButton { get; }
+        public ICommand BackToMainPanelCommand { get; }
 
+        /// <summary>
+        /// This creates the CreateTaskViewModel and sets the buttons for adding a task and going back.
+        /// </summary>
+        /// <param name="navigationStore">change pages in the app</param>
         public CreateTaskViewModel(NavigationStore navigationStore)
         {
             SubmitAddTask = new CreateTaskCommand(this,navigationStore);
-            ReturnToMainPanelButton = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
+            BackToMainPanelCommand = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
             LoadUsers();
-        }
+        }//End
+
 
         /// <summary>
         /// Load and set usernames from the database
@@ -108,10 +117,11 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
                 UsersList.Clear();
                 foreach (var u in db.UsersRepository.GetAllUsers())UsersList.Add(u);
             }
-        }
+        }//End
+
 
         /// <summary>
-        /// Filter GridView by username
+        /// Filter ListView by username
         /// </summary>
         private void FilterUsers()
         {
@@ -121,7 +131,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
                 var result = db.UsersRepository.FilterUserByUsername(SearchText ?? "");
                 foreach (var u in result)UsersList.Add(u);
             }
-        }
+        }//End
 
 
     }

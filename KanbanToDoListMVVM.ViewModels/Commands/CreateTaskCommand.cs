@@ -1,14 +1,13 @@
 ﻿// System
-using System;
-using System.Windows;
-
-
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.Utilities;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
+using System;
+using System.Threading.Tasks;
+using System.Windows;
 
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
@@ -24,15 +23,18 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             _navigationStore = navigationStore;
         }
 
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             int stageToDo = 1;
-            bool IsCreateTaskFormValid = Validation.IsCreateTaskFormValid(_viewModel.TxtTitleAddTask, _viewModel.TxtInfoAddTask, _viewModel.TxtDurationAddTask);
+            bool IsCreateTaskFormValid = Validation.IsCreateTaskFormValid(_viewModel.TaskTitle, _viewModel.TaskDescription, _viewModel.TaskDuration);
 
             int userId = _viewModel.SelectedUser?.ID ?? 0;
             if (userId == 0)
             {
-                MessageBox.Show("Please select a user.");
+
+                _viewModel.CheckValidationLabal = "";
+                await Task.Delay(1000);
+                _viewModel.CheckValidationLabal = "Please select a user.";
                 return;
             }
 
@@ -44,11 +46,11 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                     {
                         Tasks task = new Tasks()
                         {
-                            Title = _viewModel.TxtTitleAddTask,
-                            Description = _viewModel.TxtInfoAddTask,
+                            Title = _viewModel.TaskTitle,
+                            Description = _viewModel.TaskDescription,
                             CreatedAt = DateTime.Now,
                             UpdatedAt = DateTime.Now,
-                            Duration = Convert.ToInt32(_viewModel.TxtDurationAddTask),
+                            Duration = Convert.ToInt32(_viewModel.TaskDuration),
                             StageId = stageToDo,
                             UserId = userId
                         };
@@ -60,7 +62,9 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                 }
                 catch
                 {
-                    MessageBox.Show("Database Error");
+                    _viewModel.CheckValidationLabal = "";
+                    await Task.Delay(1000);
+                    _viewModel.CheckValidationLabal = "Database Error.";
                 }
             }
         }

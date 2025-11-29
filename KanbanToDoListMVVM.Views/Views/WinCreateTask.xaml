@@ -52,14 +52,14 @@
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Title :" Width="50" VerticalAlignment="Center"/>
                         <TextBox Width="235" Margin="5"
-                                 Text="{Binding TxtTitleAddTask, UpdateSourceTrigger=PropertyChanged}"/>
+                                 Text="{Binding TaskTitle, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <!-- Duration -->
                     <StackPanel Orientation="Horizontal" Margin="0 5">
                         <TextBlock Text="Duration :" Width="50" VerticalAlignment="Center"/>
                         <TextBox Width="40" Margin="5"
-                                 Text="{Binding TxtDurationAddTask, UpdateSourceTrigger=PropertyChanged}"/>
+                                 Text="{Binding TaskDuration, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <!-- Info -->
@@ -67,7 +67,7 @@
                         <TextBlock Text="Info :" Width="50" VerticalAlignment="Top"/>
                         <TextBox Width="235" Height="200" Margin="5"
                                  TextWrapping="Wrap" AcceptsReturn="True"
-                                 Text="{Binding TxtInfoAddTask, UpdateSourceTrigger=PropertyChanged}"/>
+                                 Text="{Binding TaskDescription, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -87,8 +87,9 @@
                 <Button Content="Back" Margin="98,7,138,9" 
                     Height="41" FontWeight="Bold" Foreground="White" 
                     Background="#17A2B8" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
-                    Command="{Binding ReturnToMainPanelButton}" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.883,0.875"
+                    Command="{Binding BackToMainPanelCommand}" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.883,0.875"
                     />
+                <Label FontWeight="Bold" FontSize="16" FontFamily="B Titr" Margin="-217,0,374,0" Foreground="#DC3545" Content="{Binding CheckValidationLabal}"/>
 
             </Grid>
 
