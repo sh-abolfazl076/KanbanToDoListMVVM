@@ -15,6 +15,12 @@
                     Background="#0078D7" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
                     Command="{Binding SubmitAddUser}"
                     />
+            <!-- Back -->
+            <Button Content="Back" Margin="5" 
+            Padding="12 6" FontWeight="Bold" Foreground="White" 
+            Background="#17A2B8" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
+            Command="{Binding BackToMainPanleButtom}"
+            />
 
         </StackPanel>
 

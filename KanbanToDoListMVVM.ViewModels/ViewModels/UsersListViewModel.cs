@@ -1,13 +1,13 @@
 ﻿// System
-using System.Linq;
-using System.Windows.Input;
-using System.Collections.ObjectModel;
-
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
 
 
 
@@ -27,6 +27,8 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public ICommand UserRemove { get; }
         public ICommand UserEdit{ get; }
         public ICommand PermissionsCommand { get; }
+        public ICommand BackToMainPanleButtom { get; }
+        
 
         public UsersListViewModel(NavigationStore navigationStore)
         {
@@ -34,6 +36,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             UserRemove = new UserRemoveCommand(this,navigationStore);
             UserEdit = new UserCommand(this, navigationStore);
             PermissionsCommand = new GetUserIdForPermissionCommand(this, navigationStore);
+            BackToMainPanleButtom = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
 
 
         }
