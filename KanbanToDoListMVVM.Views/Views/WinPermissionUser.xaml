@@ -37,8 +37,10 @@
 
         <!-- Save Button -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-            <Button Command="{Binding SubmitPermssionUser}" Content="Save"  Width="100" Height="30" Background="#4CAF50" Foreground="White" FontWeight="Bold" BorderThickness="0" />
+            <Button Command="{Binding SubmitPermssionUser}" Content="Save" Margin="0,0,10,0"  Width="80" Height="30" Background="#4CAF50" Foreground="White" FontWeight="Bold" BorderThickness="0" />
+            <Button Command="{Binding BackToUserListButtom}" Content="Back"  Width="80" Height="30" Background="#17A2B8" Foreground="White" FontWeight="Bold" BorderThickness="0" />
         </StackPanel>
+
 
     </Grid>
     

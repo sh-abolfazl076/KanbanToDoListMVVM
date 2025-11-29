@@ -1,6 +1,8 @@
 ﻿// System
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
+
 // Internal
 using KanbanToDoListMVVM.ViewModels.Stores;
 using System;
@@ -92,13 +94,15 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 
         ////
 
-
+        
         public ICommand SubmitPermssionUser { get; }
+        public ICommand BackToUserListButtom { get; }
 
         public PermissionUserViewModel(int userId ,NavigationStore navigationStore)
         {
             _userId = userId;
             SubmitPermssionUser = new PermissionUserCommand(this,userId,navigationStore);
+            BackToUserListButtom = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
             LoadUserPermissions();
         }
 
