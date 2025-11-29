@@ -1,13 +1,13 @@
 ﻿// System
-using KanbanToDoListMVVM.Models.Context;
-using KanbanToDoListMVVM.ViewModels.Commands;
-using KanbanToDoListMVVM.ViewModels.Services;
-
-// Internal
-using KanbanToDoListMVVM.ViewModels.Stores;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+
+// Internal
+using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
+using KanbanToDoListMVVM.Models.Context;
+using KanbanToDoListMVVM.ViewModels.Stores;
 
 
 
@@ -15,6 +15,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class PermissionUserViewModel : ViewModelBase
     {
+        private int _userId;
 
         private string _titlePermission;
         public string TitlePermission
@@ -90,21 +91,22 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
 
-        private int _userId;
-
-        ////
-
         
-        public ICommand SubmitPermssionUser { get; }
-        public ICommand BackToUserListButtom { get; }
+        public ICommand SubmitPermssionUserCommand { get; }
+        public ICommand BackToUserListCommand { get; }
 
+        /// <summary>
+        /// This creates the PermissionUserViewModel and sets the buttons for saving permissions and going back.
+        /// </summary>
+        /// <param name="userId">The ID of the user</param>
+        /// <param name="navigationStore">change pages in the app</param>
         public PermissionUserViewModel(int userId ,NavigationStore navigationStore)
         {
             _userId = userId;
-            SubmitPermssionUser = new PermissionUserCommand(this,userId,navigationStore);
-            BackToUserListButtom = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
+            SubmitPermssionUserCommand = new PermissionUserCommand(this,userId,navigationStore);
+            BackToUserListCommand = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
             LoadUserPermissions();
-        }
+        }//End
 
 
 
@@ -138,7 +140,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             {
                 System.Windows.MessageBox.Show("Database Error!");
             }
-        }
+        }//End
 
     }
 }
