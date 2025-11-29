@@ -21,27 +21,25 @@
             <StackPanel Orientation="Horizontal" Grid.Column="0">
                 <!-- Users List button -->
                 <Button Content="Users List" Margin="5" 
-                Padding="12 6" FontWeight="Bold" Foreground="White" 
-                Background="#0078D7" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
-                Command="{Binding ButtomUsersList}" 
-                      
-                        
-        />
+                        Padding="12 6" FontWeight="Bold" Foreground="White" 
+                        Background="#0078D7" BorderBrush="#005A9E" BorderThickness="1" Cursor="Hand"
+                        Command="{Binding UsersListCommand}" 
+                        />
 
                 <!-- Log Out button -->
                 <Button Content="Log Out" Margin="5" 
-                Padding="12 6" FontWeight="Bold" Foreground="White" 
-                Background="#107C10" BorderBrush="#0B5C0B" BorderThickness="1" Cursor="Hand"
-               
-                Command="{Binding ButtomLogOut}"
-        />
+                        Padding="12 6" FontWeight="Bold" Foreground="White" 
+                        Background="#107C10" BorderBrush="#0B5C0B" BorderThickness="1" Cursor="Hand"
+                        Command="{Binding LogOutCommand}"
+                        />
 
                 <!-- New Task button -->
                 <Button Content="New Task" Margin="5" 
-                Padding="14 8" FontWeight="Bold" Foreground="White" 
-                Background="#E81123" BorderBrush="#B50D1E" BorderThickness="1" Cursor="Hand"
-                Command="{Binding ButtomCreateTask}"
-        />
+                        Padding="14 8" FontWeight="Bold" Foreground="White" 
+                        Background="#E81123" BorderBrush="#B50D1E" BorderThickness="1" Cursor="Hand"
+                        Command="{Binding CreateTaskCommand}"
+                        />
+                
             </StackPanel>
 
             <!-- Live clock on the right -->
@@ -74,7 +72,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.TaskCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -96,7 +94,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.TaskCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -117,7 +115,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.TaskCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -139,7 +137,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.TaskCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -160,7 +158,7 @@
                                 <DataTemplate>
                                     <Button Content="{Binding Title}" Width="130" Height="45" Background="#E91E63"
                                             Foreground="White" Margin="5" FontSize="12" FontWeight="Bold" 
-                                            Command="{Binding DataContext.TaskClickCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Command="{Binding DataContext.TaskCommand,RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}">
                                     </Button>
                                 </DataTemplate>
@@ -169,9 +167,7 @@
 
                     </DockPanel>
                 </Border>
-                
-                
-                
+
             </Grid>
         </ScrollViewer>
     </DockPanel>
