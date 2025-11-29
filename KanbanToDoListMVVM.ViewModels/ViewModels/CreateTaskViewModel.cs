@@ -1,13 +1,12 @@
 ﻿// System
-using System.Collections.ObjectModel;
-using System.Windows.Input;
-
-
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
+using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
@@ -87,13 +86,15 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         
         public ObservableCollection<Users> UsersList { get; set; } = new ObservableCollection<Users>();
 
-         
+        
         public ICommand SubmitAddTask { get; }
 
-        
+        public ICommand ReturnToMainPanelButton { get; }
+
         public CreateTaskViewModel(NavigationStore navigationStore)
         {
             SubmitAddTask = new CreateTaskCommand(this,navigationStore);
+            ReturnToMainPanelButton = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
             LoadUsers();
         }
 
