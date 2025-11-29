@@ -26,12 +26,12 @@ namespace KanbanToDoListMVVM.Views.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ServerNameDatabase {
+        public string ServerName {
             get {
-                return ((string)(this["ServerNameDatabase"]));
+                return ((string)(this["ServerName"]));
             }
             set {
-                this["ServerNameDatabase"] = value;
+                this["ServerName"] = value;
             }
         }
         

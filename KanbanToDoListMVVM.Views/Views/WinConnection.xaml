@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <TextBlock Text="Database Connection" 
+        <TextBlock Text="{Binding Title}" 
                    FontSize="20" FontWeight="Bold" 
                    HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
@@ -22,7 +22,7 @@
         <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Top" >
             <Label Content="Server"/>
             <TextBox Height="25" Margin="0,0,0,10"
-                     Text ="{Binding ServerNameDatabase , UpdateSourceTrigger=PropertyChanged }"
+                     Text ="{Binding ServerName , UpdateSourceTrigger=PropertyChanged }"
                      />
 
             <Label Content="Database"/>
@@ -37,17 +37,19 @@
 
             <Label Content="Password"/>
             <TextBox Text ="{Binding PasswordDatabase , UpdateSourceTrigger=PropertyChanged }" Height="25"/>
+            <Label FontWeight="Bold" FontSize="16" FontFamily="B Titr" Margin="0,0,0,0" Foreground="#DC3545" Content="{Binding CheckConnectionLabal}"/>
         </StackPanel>
 
         <!-- Button -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" 
                     HorizontalAlignment="Right" Margin="0,0,0,0">
-            <Button Content="Check Connection" x:Name="btnCheckDB" 
+            <Button Content="Check Connection" 
                     Width="140" Height="39"  Margin="0,0,12,0"
                     Background="#2196F3" Foreground="White" 
                     FontWeight="Bold" 
-                    Command="{Binding ButtonCheckConnection}"            
+                    Command="{Binding CheckConnectionCommand}"            
                     />
+
         </StackPanel>
     </Grid>
 </UserControl>

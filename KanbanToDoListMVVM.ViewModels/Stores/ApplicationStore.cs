@@ -22,7 +22,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
         public static ApplicationStore Instance => _instance.Value;
         private ApplicationStore() { }
 
-        public string ServerNameDatabase { get; private set; }
+        public string ServerName { get; private set; }
         public string DatabaseName { get; private set; }
         public string UsernameDatabase { get; private set; }
         public string PasswordDatabase { get; private set; }
@@ -42,7 +42,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
         /// <param name="pass"></param>
         public void SetConnectionInfo(string server, string database, string user, string password)
         {
-            ServerNameDatabase = server;
+            ServerName = server;
             DatabaseName = database;
             UsernameDatabase = user;
             PasswordDatabase = password;
@@ -58,7 +58,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
                 var info = JsonConvert.DeserializeObject<ConnectionInfo>(json);
                 if (info != null)
                 {
-                    ServerNameDatabase = info.Server;
+                    ServerName = info.Server;
                     DatabaseName = info.Database;
                     UsernameDatabase = info.Username;
                     PasswordDatabase = info.Password;
@@ -70,7 +70,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
         {
             var info = new ConnectionInfo
             {
-                Server = ServerNameDatabase,
+                Server = ServerName,
                 Database = DatabaseName,
                 Username = UsernameDatabase,
                 Password = PasswordDatabase
@@ -87,7 +87,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
             res://*/Models.ToDoListModel.ssdl|
             res://*/Models.ToDoListModel.msl;
             provider=System.Data.SqlClient;
-            provider connection string=""Data Source={ServerNameDatabase};Initial Catalog={DatabaseName};User ID={UsernameDatabase};Password={PasswordDatabase};MultipleActiveResultSets=True;App=EntityFramework""";
+            provider connection string=""Data Source={ServerName};Initial Catalog={DatabaseName};User ID={UsernameDatabase};Password={PasswordDatabase};MultipleActiveResultSets=True;App=EntityFramework""";
 
 
         /// <summary>

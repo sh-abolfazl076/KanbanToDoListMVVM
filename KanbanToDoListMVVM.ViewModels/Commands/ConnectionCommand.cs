@@ -1,10 +1,11 @@
 ﻿// System
-using System.Windows;
+using System.Threading.Tasks;
 
 // Internal
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
+
 
 
 
@@ -23,9 +24,9 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             _navigationService = navigationService;
         }
 
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
-            string server = _ViewModel.ServerNameDatabase;
+            string server = _ViewModel.ServerName;
             string db = _ViewModel.DatabaseName;
             string user = _ViewModel.UsernameDatabase;
             string password = _ViewModel.PasswordDatabase;
@@ -40,7 +41,9 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             }
             else
             {
-                MessageBox.Show("Connection Failed");
+                _ViewModel.CheckConnectionLabal = "";
+                await Task.Delay(1000);
+                _ViewModel.CheckConnectionLabal = "Connection Error";
             }
 
         }

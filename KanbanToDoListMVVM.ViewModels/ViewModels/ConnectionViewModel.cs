@@ -1,37 +1,44 @@
 ﻿// System
+using System.Windows.Input;
+
+// Internal
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
-// Internal
 using KanbanToDoListMVVM.ViewModels.Stores;
-using System.Windows.Input;
 
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class ConnectionViewModel :ViewModelBase
     {
-        private string _serverNameDatabase;
-        public string ServerNameDatabase
+        private string _title;
+        public string Title
         {
-            get
-            {
-                return _serverNameDatabase;
-            }
+            get => _title = "Database Connection";
             set
             {
-                _serverNameDatabase = value;
-                OnPropertyChanged(nameof(ServerNameDatabase));
+                _title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+        ////
+        
+        private string _serverName = ".\\Moein2019";
+        public string ServerName
+        {
+            get => _serverName ;
+            set
+            {
+                _serverName = value;
+                OnPropertyChanged(nameof(ServerName));
             }
         }
         ////
 
-        private string _databaseName;
+        private string _databaseName = "KanbanToDoListWPF";
         public string DatabaseName
         {
-            get
-            {
-                return _databaseName;
-            }
+            get => _databaseName;
             set
             {
                 _databaseName = value;
@@ -40,13 +47,10 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         }
         ////
         
-        private string _usernameDatabase;
+        private string _usernameDatabase = "sa";
         public string UsernameDatabase
         {
-            get
-            {
-                return _usernameDatabase;
-            }
+            get => _usernameDatabase;
             set
             {
                 _usernameDatabase = value;
@@ -55,13 +59,10 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         }
         ////
 
-        private string _passwordDatabase;
+        private string _passwordDatabase = "arta0@";
         public string PasswordDatabase
         {
-            get
-            {
-                return _passwordDatabase;
-            }
+            get => _passwordDatabase;
             set
             {
                 _passwordDatabase = value;
@@ -70,13 +71,30 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         }
         ////
 
-        public ICommand ButtonCheckConnection {  get;}
+        private string _CheckConnectionLabal;
+        public string CheckConnectionLabal
+        {
+            get => _CheckConnectionLabal;
+            set
+            {
+                _CheckConnectionLabal = value;
+                OnPropertyChanged(nameof(CheckConnectionLabal));
+            }
+        }
+        ////
 
+        public ICommand CheckConnectionCommand {  get;}
+
+
+        /// <summary>
+        /// his sets the connection command for the ConnectionViewModel.
+        /// </summary>
+        /// <param name="navigationStore"></param>
         public ConnectionViewModel(NavigationStore navigationStore)
         {
-            ButtonCheckConnection = new ConnectionCommand<LoginViewModel>(this,new NavigationService<LoginViewModel>(navigationStore,() => new LoginViewModel(navigationStore)));
-
-        }
+            CheckConnectionCommand = new ConnectionCommand<LoginViewModel>(this,
+                new NavigationService<LoginViewModel>(navigationStore,() => new LoginViewModel(navigationStore)));
+        }//End
 
     }
 }
