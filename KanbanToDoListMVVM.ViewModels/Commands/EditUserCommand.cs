@@ -5,6 +5,8 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 using KanbanToDoListMVVM.ViewModels.ViewModels;
 using System;
+using System.Threading.Tasks;
+
 
 // Internal
 
@@ -25,7 +27,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             _navigationStore = navigationStore;
         }
 
-        public override void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             try
             {
@@ -34,18 +36,20 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 
 
                     var edit = db.UsersRepository.GetUserById(_userId);
-                    var existingUser = db.UsersRepository.GetUserByUsername(_ViewModel.TxtUsernameEdit);
+                    var existingUser = db.UsersRepository.GetUserByUsername(_ViewModel.Username);
 
                     if (existingUser != null)
                     {
-                        MessageBox.Show("A User with this name exists, please choose another.");
+                        _ViewModel.CheckPermissionLabal = "";
+                        await Task.Delay(1000);
+                        _ViewModel.CheckPermissionLabal = "A User with this name exists, please choose another.";
                     }
                     else
                     {
                         if (edit != null)
                         {
-                            edit.UserName = _ViewModel.TxtUsernameEdit;
-                            edit.PassWord = _ViewModel.TxtPasswordEdit;
+                            edit.UserName = _ViewModel.Username;
+                            edit.PassWord = _ViewModel.Password;
                             edit.UpdatedAt = DateTime.Now;
 
 
@@ -59,7 +63,9 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             }
             catch
             {
-                MessageBox.Show("ِDatabese Error !");
+                _ViewModel.CheckPermissionLabal = "";
+                await Task.Delay(1000);
+                _ViewModel.CheckPermissionLabal = "Databese Error ! .";
             }
         }
     }

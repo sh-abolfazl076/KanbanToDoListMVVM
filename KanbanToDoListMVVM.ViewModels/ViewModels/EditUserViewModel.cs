@@ -1,74 +1,77 @@
 ﻿// System
+using System.Windows.Input;
 
 // Internal
-
-
-using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
-using System.Windows.Input;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class EditUserViewModel : ViewModelBase
     {
-        private string _txtTitleUserEdit;
-        public string TxtTitleUserEdit
+        private string _titleUserEdit;
+        public string TitleUserEdit
         {
-            get
-            {
-                return _txtTitleUserEdit = "Edit User";
-            }
+            get => _titleUserEdit = "Change User";
             set
             {
-                _txtTitleUserEdit = value;
-                OnPropertyChanged(nameof(TxtTitleUserEdit));
+                _titleUserEdit = value;
+                OnPropertyChanged(nameof(TitleUserEdit));
             }
         }
         ////
 
-        private string _txtUsernameEdit;
-        public string TxtUsernameEdit
+        private string _username;
+        public string Username
         {
-            get
-            {
-                return _txtUsernameEdit;
-            }
+            get => _username;
             set
             {
-                _txtUsernameEdit = value;
-                OnPropertyChanged(nameof(TxtUsernameEdit));
+                _username = value;
+                OnPropertyChanged(nameof(Username));
             }
         }
         ////
 
-        private string _txtPasswordEdit;
-        public string TxtPasswordEdit
+        private string _password;
+        public string Password
         {
-            get
-            {
-                return _txtPasswordEdit;
-            }
+            get => _password;
             set
             {
-                _txtPasswordEdit = value;
-                OnPropertyChanged(nameof(TxtPasswordEdit));
+                _password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+        ////
+
+        private string _checkPermissionLabal;
+        public string CheckPermissionLabal
+        {
+            get => _checkPermissionLabal;
+            set
+            {
+                _checkPermissionLabal = value;
+                OnPropertyChanged(nameof(CheckPermissionLabal));
             }
         }
         ////
         
-        public ICommand SubmitUserEdit { get; }
-        public ICommand BackToUserList { get; }
+        public ICommand SubmitUserEditCommand { get; }
+        public ICommand BackToUserListCommand { get; }
 
 
-
+        /// <summary>
+        /// This creates the EditUserViewModel and sets the buttons for saving changes and going back.
+        /// </summary>
+        /// <param name="userId">The ID of the user to edit</param>
+        /// <param name="navigationStore">change pages in the app</param>
         public EditUserViewModel(int userId, NavigationStore navigationStore)
         {
-
-            BackToUserList = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
-            SubmitUserEdit = new EditUserCommand(this,userId, navigationStore);
-        }
+            BackToUserListCommand = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
+            SubmitUserEditCommand = new EditUserCommand(this,userId, navigationStore);
+        }//End
 
     }
 }

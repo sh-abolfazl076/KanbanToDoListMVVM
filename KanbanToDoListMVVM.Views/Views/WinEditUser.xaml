@@ -17,27 +17,28 @@
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <TextBlock Text="{Binding TxtTitleUserEdit}"  FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+        <TextBlock Text="{Binding TitleUserEdit}"  FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
 
         <!-- Inputs -->
         <StackPanel Grid.Row="1" Margin="10,5,10,5" VerticalAlignment="Top" >
 
             <Label Content="Username" />
             <TextBox Height="25" Margin="0,0,0,10"
-                     Text ="{Binding TxtUsernameEdit , UpdateSourceTrigger=PropertyChanged }"
+                     Text ="{Binding Username , UpdateSourceTrigger=PropertyChanged }"
                      />
 
-            <Label Content="PassWord" />
+            <Label Content="Password" />
             <TextBox Height="25" Margin="0,0,0,10"
-                         Text ="{Binding TxtPasswordEdit , UpdateSourceTrigger=PropertyChanged }"
+                         Text ="{Binding Password , UpdateSourceTrigger=PropertyChanged }"
                          />
+            <Label FontWeight="Bold" FontSize="11" FontFamily="B Titr" Margin="0,0,0,0" Foreground="#DC3545" Content="{Binding CheckPermissionLabal}" Height="40"/>
 
         </StackPanel>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Command="{Binding BackToUserList}" Content="Back"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4C9F50" Foreground="White" />
-            <Button Command="{Binding SubmitUserEdit}" Content="Login"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4CAF50" Foreground="White" />
+            <Button Command="{Binding BackToUserListCommand}" Content="Back"  Width="75" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#4C9F50" Foreground="White" />
+            <Button Command="{Binding SubmitUserEditCommand}" Content="Save Change"  Width="86" Height="30" Margin="7,0,0,0" FontWeight="Bold" Background="#17A2B8" Foreground="White" />
         </StackPanel>
 
     </Grid>
