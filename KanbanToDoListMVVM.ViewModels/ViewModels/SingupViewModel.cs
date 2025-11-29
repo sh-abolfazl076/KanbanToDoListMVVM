@@ -1,69 +1,76 @@
 ﻿// System
+using System.Windows.Input;
 
 // Internal
 using KanbanToDoListMVVM.ViewModels.Commands;
 using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
-using System.Windows.Input;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class SingUpViewModel :ViewModelBase
     {
-        private string _txtUsernameSingUp;
-        public string TxtUsernameSingUp
+        private string _title;
+        public string Title
         {
-            get
-            {
-                return _txtUsernameSingUp;
-            }
+            get => _title = "Sing Up !";
             set
             {
-                _txtUsernameSingUp = value;
-                OnPropertyChanged(nameof(TxtUsernameSingUp));
+                _title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+        ////
+        
+        private string _username;
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnPropertyChanged(nameof(Username));
             }
         }
         ////
 
-        private string _txtPasswordSingUp;
-        public string TxtPasswordSingUp
+        private string _password;
+        public string Password
         {
-            get
-            {
-                return _txtPasswordSingUp;
-            }
+            get => _password;
             set
             {
-                _txtPasswordSingUp = value;
-                OnPropertyChanged(nameof(TxtPasswordSingUp));
+                _password = value;
+                OnPropertyChanged(nameof(Password));
             }
         }
         ////
-        private string _txtPasswordChekSingUp;
-        public string TxtPasswordChekSingUp
+        private string _passwordChek;
+        public string PasswordChek
         {
-            get
-            {
-                return _txtPasswordChekSingUp;
-            }
+            get => _passwordChek;
             set
             {
-                _txtPasswordChekSingUp = value;
-                OnPropertyChanged(nameof(TxtPasswordChekSingUp));
+                _passwordChek = value;
+                OnPropertyChanged(nameof(PasswordChek));
             }
         }
         //// 
 
 
+        public ICommand SubmitAddUserCommand { get; }
+        public ICommand BackToLoginCommand { get; }
 
-        public ICommand SubmitAddUser{ get; }
-        public ICommand ButtonBack{ get; }
 
+        /// <summary>
+        /// Initializes the SignUpViewModel and sets up navigation and submit commands.
+        /// </summary>
+        /// <param name="navigationStore">Handles view navigation</param>
         public SingUpViewModel(NavigationStore navigationStore)
         {
-            ButtonBack = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
-            SubmitAddUser = new SingUpCommand(this , navigationStore);
-        }
+            BackToLoginCommand = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
+            SubmitAddUserCommand = new SingUpCommand(this , navigationStore);
+        }//End
 
     }
 }

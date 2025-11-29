@@ -33,8 +33,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
         /// <param name="parameter"></param>
         public override void Execute(object parameter)
         {
-            bool isUsernameAndPasswordValid = Validation.IsUsernameAndPasswordValid(_ViewModel.TxtUsernameSingUp, _ViewModel.TxtPasswordSingUp);
-            bool isPasswordConfirmed = Validation.IsPasswordConfirmed(_ViewModel.TxtPasswordSingUp, _ViewModel.TxtPasswordChekSingUp);
+            bool isUsernameAndPasswordValid = Validation.IsUsernameAndPasswordValid(_ViewModel.Username, _ViewModel.Password);
+            bool isPasswordConfirmed = Validation.IsPasswordConfirmed(_ViewModel.Password, _ViewModel.PasswordChek);
             if (isUsernameAndPasswordValid && isPasswordConfirmed)
             { 
             
@@ -43,7 +43,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
  
                     using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
                     {
-                        var existingUser = db.UsersRepository.GetUserByUsername(_ViewModel.TxtUsernameSingUp);
+                        var existingUser = db.UsersRepository.GetUserByUsername(_ViewModel.Username);
 
                         if (existingUser != null)
                         {
@@ -53,8 +53,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                         {
                             Users user = new Users()
                             {
-                                UserName = _ViewModel.TxtUsernameSingUp,
-                                PassWord = _ViewModel.TxtPasswordSingUp,
+                                UserName = _ViewModel.Username,
+                                PassWord = _ViewModel.Password,
                                 CreatedAt = DateTime.Now,
                                 UpdatedAt = DateTime.Now
                             };

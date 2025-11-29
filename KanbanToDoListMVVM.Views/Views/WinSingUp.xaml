@@ -14,29 +14,29 @@
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <TextBlock Text="Edit User" Name="txtTitle" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+        <TextBlock Text="{Binding Title}" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
 
         <!-- Inputs -->
         <StackPanel Grid.Row="1" Margin="10,5,10,5" VerticalAlignment="Top" >
 
             <Label Content="Username" />
             <TextBox Height="25" Margin="0,0,0,10"
-                      Text ="{Binding TxtUsernameSingUp , UpdateSourceTrigger=PropertyChanged }"/>
+                      Text ="{Binding Username , UpdateSourceTrigger=PropertyChanged }"/>
 
             <Label Content="Password" />
             <TextBox Height="25" Margin="0,0,0,10"
-                         Text ="{Binding TxtPasswordSingUp , UpdateSourceTrigger=PropertyChanged }"/>
+                         Text ="{Binding Password , UpdateSourceTrigger=PropertyChanged }"/>
 
             <Label Content="Confirm Password" />
             <TextBox  Height="25"
-                      Text ="{Binding TxtPasswordChekSingUp , UpdateSourceTrigger=PropertyChanged }"/>
+                      Text ="{Binding PasswordChek , UpdateSourceTrigger=PropertyChanged }"/>
 
         </StackPanel>
 
         <!-- Buttons -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Command="{Binding SubmitAddUser}" Content="Save"  Width="80" Height="30" Margin="0,0,10,0" Background="#4CAF50" Foreground="White" />
-            <Button Command="{Binding ButtonBack}" Content="Close"  Width="80" Height="30" Background="#F44336" Foreground="White" />
+            <Button Command="{Binding SubmitAddUserCommand}" Content="Save"  Width="80" Height="30" Margin="0,0,10,0" Background="#4CAF50" Foreground="White" />
+            <Button Command="{Binding BackToLoginCommand}" Content="Back"  Width="80" Height="30" Background="#F44336" Foreground="White" />
         </StackPanel>
 
     </Grid>
