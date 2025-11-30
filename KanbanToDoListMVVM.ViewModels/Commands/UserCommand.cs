@@ -8,14 +8,14 @@ using KanbanToDoListMVVM.ViewModels.ViewModels;
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
 {
-    public class UserCommand : CommandBase
+    public class GetUserIdForEditUserCommand : CommandBase
     {
 
-        private readonly NavigationStore _navigationStore;
         private UsersListViewModel _viewModel;
+        private readonly NavigationStore _navigationStore;
 
 
-        public UserCommand(UsersListViewModel user, NavigationStore navigationStore)
+        public GetUserIdForEditUserCommand(UsersListViewModel user, NavigationStore navigationStore)
         {
             _viewModel = user;
             _navigationStore = navigationStore;

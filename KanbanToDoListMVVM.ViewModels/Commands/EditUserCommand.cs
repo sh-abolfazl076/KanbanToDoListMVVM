@@ -1,55 +1,55 @@
-﻿using KanbanToDoListMVVM.Models.Context;
-using KanbanToDoListMVVM.Models.Models;
-using KanbanToDoListMVVM.ViewModels.Stores;
-// System
-
-using KanbanToDoListMVVM.ViewModels.ViewModels;
+﻿// System
 using System;
 using System.Threading.Tasks;
 
 
 // Internal
+using KanbanToDoListMVVM.ViewModels.Stores;
+using KanbanToDoListMVVM.ViewModels.ViewModels;
+using KanbanToDoListMVVM.Models.Context;
 
-using System.Windows;
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
 {
     public class EditUserCommand : CommandBase
     {
-        private EditUserViewModel _ViewModel;
         private int _userId;
+        private EditUserViewModel _viewModel;
         private NavigationStore _navigationStore;
 
         public EditUserCommand(EditUserViewModel viewModel,int userId, NavigationStore navigationStore)
         {
-            _ViewModel = viewModel;
+            _viewModel = viewModel;
             _userId = userId;
             _navigationStore = navigationStore;
         }
 
+        /// <summary>
+        /// This runs when the user clicks the Save button to edit a user.
+        /// It checks if the username already exists.
+        /// </summary>
+        /// <param name="parameter"></param>
         public override async void Execute(object parameter)
         {
             try
             {
                 using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
                 {
-
-
                     var edit = db.UsersRepository.GetUserById(_userId);
-                    var existingUser = db.UsersRepository.GetUserByUsername(_ViewModel.Username);
+                    var existingUser = db.UsersRepository.GetUserByUsername(_viewModel.Username);
 
                     if (existingUser != null)
                     {
-                        _ViewModel.CheckPermissionLabal = "";
+                        _viewModel.CheckPermissionLabal = "";
                         await Task.Delay(1000);
-                        _ViewModel.CheckPermissionLabal = "A User with this name exists, please choose another.";
+                        _viewModel.CheckPermissionLabal = "A User with this name exists, please choose another.";
                     }
                     else
                     {
                         if (edit != null)
                         {
-                            edit.UserName = _ViewModel.Username;
-                            edit.PassWord = _ViewModel.Password;
+                            edit.UserName = _viewModel.Username;
+                            edit.PassWord = _viewModel.Password;
                             edit.UpdatedAt = DateTime.Now;
 
 
@@ -63,10 +63,10 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             }
             catch
             {
-                _ViewModel.CheckPermissionLabal = "";
+                _viewModel.CheckPermissionLabal = "";
                 await Task.Delay(1000);
-                _ViewModel.CheckPermissionLabal = "Databese Error ! .";
+                _viewModel.CheckPermissionLabal = "Databese Error ! .";
             }
-        }
+        }//End
     }
 }

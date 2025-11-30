@@ -13,8 +13,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 {
     public class PermissionUserCommand : CommandBase
     {
-        private PermissionUserViewModel _viewModel;
         private int _userId;
+        private PermissionUserViewModel _viewModel;
         private NavigationStore _navigationStore;
 
         public PermissionUserCommand(PermissionUserViewModel viewModel, int userId, NavigationStore navigationStore)
@@ -22,8 +22,16 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             _viewModel = viewModel;
             _userId = userId;
             _navigationStore = navigationStore;
-        }
+        }//End
 
+
+        /// <summary>
+        /// This runs when the user clicks the Save Permissions button
+        /// It checks every permission (Add, Delete, Update, Manage Users)
+        /// If a permission is checked and not in the database, it adds it
+        /// If a permission is unchecked and exists in the database, it removes it.
+        /// </summary>
+        /// <param name="parameter"></param>
         public override void Execute(object parameter)
         {
             var permissions = new List<(bool IsChecked, string Permission)>
@@ -40,7 +48,6 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                 {
                     int permissionId = db.PermissionsRepository.GetPermissionIdByTitle(permissionName);
                     var existing = db.UserPermissionsRepository.CheckPermission(_userId, permissionId);
-
 
                     if (isChecked)
                     {
@@ -70,8 +77,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 
                 }
             }
-
-            
-        }
+    
+        }//End
     }
 }

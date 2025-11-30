@@ -21,8 +21,10 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
             _navigationStore = navigationStore;
         }
 
-
-
+        /// <summary>
+        /// It opens the Permissions page for the selected user.
+        /// </summary>
+        /// <param name="parameter"></param>
         public override void Execute(object parameter)
         {
             if (parameter is Users user)
@@ -30,6 +32,6 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                 _navigationStore.CurrentViewModel = new PermissionUserViewModel(user.ID, _navigationStore);
 
             }
-        }
+        }//End
     }
 }

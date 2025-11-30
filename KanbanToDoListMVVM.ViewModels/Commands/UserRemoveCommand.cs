@@ -1,11 +1,11 @@
 ﻿// System
+using System.Threading.Tasks;
+
 // Internal
 using KanbanToDoListMVVM.Models.Context;
 using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
 {
@@ -18,7 +18,12 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
         {
             _ViewModel = viewModel;
             _navigationStore = navigationStore;
-        }
+        }//End
+
+        /// <summary>
+        /// Deletes the selected user and their permissions.  
+        /// </summary>
+        /// <param name="parameter">selected user</param>
         public override async void Execute(object parameter)
         {
             if (parameter is Users user)
@@ -41,6 +46,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 
                 }
             }
-        }
+        }//End
+
     }
 }

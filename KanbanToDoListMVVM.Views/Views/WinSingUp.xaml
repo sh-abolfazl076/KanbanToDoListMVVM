@@ -30,7 +30,8 @@
             <Label Content="Confirm Password" />
             <TextBox  Height="25"
                       Text ="{Binding PasswordChek , UpdateSourceTrigger=PropertyChanged }"/>
-
+            <Label FontWeight="Bold" FontSize="11" FontFamily="B Titr" Margin="0,0,0,0" Foreground="#DC3545" Content="{Binding CheckPermissionLabal}" Height="40"/>
+            
         </StackPanel>
 
         <!-- Buttons -->

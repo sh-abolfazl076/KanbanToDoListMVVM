@@ -11,21 +11,25 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
     public class TaskCommand : CommandBase
     {
 
-        private MainPanleViewModel _ViewModel;
+        private MainPanleViewModel _viewModel;
         private NavigationStore _navigationStore;
 
         public TaskCommand(MainPanleViewModel viewModel , NavigationStore navigationStore)
         {
-            _ViewModel = viewModel;
+            _viewModel = viewModel;
             _navigationStore = navigationStore;
         }
 
+        /// <summary>
+        /// Navigates to the TaskViewModel for the selected task.
+        /// </summary>
+        /// <param name="parameter">selected task</param>
         public override void Execute(object parameter)
         {
             if (parameter is Tasks task)
             {
                 _navigationStore.CurrentViewModel = new TaskViewModel(task,_navigationStore);
             }
-        }
+        }//End
     }
 }

@@ -16,14 +16,12 @@ namespace KanbanToDoListMVVM.ViewModels.Utilities
         /// <returns></returns>
         public static bool IsUsernameAndPasswordValid(string username, string password)
         {
-            if (username == "" || password == "")
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("UserName Connot be Empty.");
                 return false;
             }
             if (username.Length > 100 || password.Length > 200)
             {
-                MessageBox.Show("Username or password exceeds the allowed limit.");
                 return false;
             }
             return true;
@@ -41,7 +39,6 @@ namespace KanbanToDoListMVVM.ViewModels.Utilities
         {
             if (password != passwordChek)
             {
-                MessageBox.Show("The amount is not one..");
                 return false;
             }
             return true;
@@ -57,19 +54,16 @@ namespace KanbanToDoListMVVM.ViewModels.Utilities
         /// <returns></returns>
         public static bool IsCreateTaskFormValid(string title, string Info, string duration)
         {
-            if (title == "" || Info == "")
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(Info))
             {
-                MessageBox.Show("UserName Connot be Empty.");
                 return false;
             }
             if (title.Length > 200 || Info.Length > 900)
             {
-                MessageBox.Show("Title or Info exceeds the allowed limit.");
                 return false;
             }
             if (!string.IsNullOrEmpty(duration) && (!int.TryParse(duration, out int d) || d <= 0))
             {
-                MessageBox.Show("Duration must be a number.");
                 return false;
             }
             return true;

@@ -1,11 +1,11 @@
 ﻿// System
-using KanbanToDoListMVVM.Models.Context;
-using KanbanToDoListMVVM.Models.Models;
 
 // Internal
+using KanbanToDoListMVVM.Models.Context;
+using KanbanToDoListMVVM.Models.Models;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
-using System;
+
 
 namespace KanbanToDoListMVVM.ViewModels.Commands
 {
@@ -18,8 +18,12 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
         {
             _task = task;
             _navigationStore = navigationStore;
-        }
+        }//End
 
+        /// <summary>
+        /// Deletes the selected task from the database
+        /// </summary>
+        /// <param name="parameter"></param>
         public override void Execute(object parameter)
         {
             using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
@@ -30,6 +34,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                 _navigationStore.CurrentViewModel = new MainPanleViewModel(_navigationStore);
             }
 
-        }
+        }//End
+
     }
 }

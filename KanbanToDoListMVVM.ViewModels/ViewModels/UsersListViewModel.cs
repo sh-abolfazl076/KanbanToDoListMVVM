@@ -48,7 +48,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         {
             LoadData();
             UserRemoveCommand = new UserRemoveCommand(this,navigationStore);
-            UserEditCommand = new UserCommand(this, navigationStore);
+            UserEditCommand = new GetUserIdForEditUserCommand(this, navigationStore);
             PermissionCommand = new GetUserIdForPermissionCommand(this, navigationStore);
             BackToMainPanleCommand = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
 

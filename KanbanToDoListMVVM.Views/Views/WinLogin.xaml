@@ -32,7 +32,8 @@
             <TextBox Height="25" Margin="0,0,0,10"
                          Text ="{Binding Password , UpdateSourceTrigger=PropertyChanged }"
                          />
-
+            <Label FontWeight="Bold" FontSize="16" FontFamily="B Titr" Margin="0,0,0,0" Foreground="#DC3545" Content="{Binding CheckPermissionLabal}" Height="40"/>
+            
         </StackPanel>
 
         <!-- Buttons -->

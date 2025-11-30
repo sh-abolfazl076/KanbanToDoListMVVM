@@ -48,7 +48,19 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
+        private string _checkPermissionLabal;
+        public string CheckPermissionLabal
+        {
+            get => _checkPermissionLabal;
+            set
+            {
+                _checkPermissionLabal = value;
+                OnPropertyChanged(nameof(CheckPermissionLabal));
+            }
+        }
+        ////
+
         public ICommand ConnectionCommand { get; }
         public ICommand SingUpCommand { get; }
         public ICommand LoginCommand { get; }

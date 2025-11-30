@@ -1,6 +1,5 @@
 ﻿// System
 using System;
-using System.Windows;
 
 // Internal
 using KanbanToDoListMVVM.Models.Context;
@@ -14,22 +13,26 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
 {
     public class EditTaskCommand : CommandBase
     {
-        private TaskViewModel _ViewModel;
+        private TaskViewModel _viewModel;
         private NavigationStore _navigationStore;
         private Tasks _task;
 
         public EditTaskCommand(Tasks task ,TaskViewModel viewModel, NavigationStore navigationStore)
         {
-            _ViewModel = viewModel;
+            _viewModel = viewModel;
             _navigationStore = navigationStore;
             _task = task;
         }
 
+        /// <summary>
+        /// This runs when the user clicks the Save button to edit a task.
+        /// </summary>
+        /// <param name="parameter"></param>
         public override void Execute(object parameter)
         {
-            int selectedIndex = _ViewModel.SelectedIndex;
+            int selectedIndex = _viewModel.SelectedIndex;
             
-            bool IsTaskFormValid = Validation.IsTaskFormValid(_ViewModel.TaskTitle, _ViewModel.TaskDescription, selectedIndex);
+            bool IsTaskFormValid = Validation.IsTaskFormValid(_viewModel.TaskTitle, _viewModel.TaskDescription, selectedIndex);
             if (IsTaskFormValid)
             {
                 try
@@ -39,9 +42,8 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                         var task = db.TasksRepository.GetTaskById(_task.ID);
                         if (task != null)
                         {
-                            task.Title = _ViewModel.TaskTitle;
-                            task.Description = _ViewModel.TaskDescription;
-                            //task.Description = Description;
+                            task.Title = _viewModel.TaskTitle;
+                            task.Description = _viewModel.TaskDescription;
                             task.UpdatedAt = DateTime.Now;
                             task.StageId = selectedIndex + 1;
                             db.TasksRepository.UpdateTask(task);
@@ -52,7 +54,7 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
                 }
                 catch
                 {
-                    MessageBox.Show("Database Error");
+                    //MessageBox.Show("Database Error");
                 }
 
 
