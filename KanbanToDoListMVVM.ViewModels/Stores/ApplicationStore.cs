@@ -3,9 +3,6 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 
-
-
-
 // Internal
 using KanbanToDoListMVVM.Models.Models;
 
@@ -34,7 +31,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 
 
         /// <summary>
-        /// Get Info from form connetion
+        /// Save connection info from the form (server, database, username, password)
         /// </summary>
         /// <param name="server"></param>
         /// <param name="database"></param>
@@ -50,6 +47,9 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 
         }// End
 
+        /// <summary>
+        /// Save connection info from the form (server, database, username, password)
+        /// </summary>
         public void LoadFromFile()
         {
             if (File.Exists("connection.json"))
@@ -64,8 +64,11 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
                     PasswordDatabase = info.Password;
                 }
             }
-        }
+        }//End
 
+        /// <summary>
+        /// Save the connection info into connection.json file.
+        /// </summary>
         private void SaveToFile()
         {
             var info = new ConnectionInfo
@@ -78,10 +81,10 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 
             string json = JsonConvert.SerializeObject(info, Formatting.Indented);
             File.WriteAllText("connection.json", json);
-        }
+        }//End
 
 
-        // make connection
+        // Creates and returns the Entity Framework connection string
         public string EfConnectionString =>
                 $@"metadata=res://*/Models.ToDoListModel.csdl|
             res://*/Models.ToDoListModel.ssdl|
@@ -91,7 +94,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 
 
         /// <summary>
-        /// Text connetion
+        /// Test the database connection.
         /// </summary>
         /// <returns></returns>
         public bool TestConnection()

@@ -5,11 +5,6 @@ using System.Windows;
 // Internal
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
-using KanbanToDoListMVVM.Views.Properties;
-//using KanbanToDoListMVVM.ViewModels.Properties;
-
-
-
 
 
 namespace KanbanToDoListMVVM.Views
@@ -49,9 +44,6 @@ namespace KanbanToDoListMVVM.Views
                 base.OnStartup(e);
             }
 
-
-
-
-        }
+        }//End
     }
 }

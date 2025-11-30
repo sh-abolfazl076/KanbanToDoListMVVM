@@ -1,5 +1,4 @@
 ﻿// System
-using System.Windows;
 
 
 // Internal
@@ -8,19 +7,23 @@ namespace KanbanToDoListMVVM.ViewModels.Utilities
 {
     public class Validation
     {
+
+        private const int MaxUsernameLength = 100;
+        private const int MaxPasswordLength = 200;
+        private const int MaxTitleLength = 200;
+        private const int MaxInfoLength = 900;
+
+
         /// <summary>
         /// This method checks that username and password are not empty and have valid length.
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
         public static bool IsUsernameAndPasswordValid(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 return false;
             }
-            if (username.Length > 100 || password.Length > 200)
+            if (username.Length > MaxUsernameLength || password.Length > MaxPasswordLength)
             {
                 return false;
             }
@@ -29,19 +32,11 @@ namespace KanbanToDoListMVVM.ViewModels.Utilities
 
 
         /// <summary>
-        /// This method checks two passwords.
-        /// Password and confirm password are the same
+        /// Checks if password and confirm password are the same.
         /// </summary>
-        /// <param name="password"></param>
-        /// <param name="passwordChek"></param>
-        /// <returns></returns>
         public static bool IsPasswordConfirmed(string password, string passwordChek)
         {
-            if (password != passwordChek)
-            {
-                return false;
-            }
-            return true;
+            return password == passwordChek;
         }//End
 
 
@@ -49,16 +44,13 @@ namespace KanbanToDoListMVVM.ViewModels.Utilities
         /// This method checks that username and password are not empty and have valid length.
         /// Checks that duration is current and values ​​are numeric.
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
         public static bool IsCreateTaskFormValid(string title, string Info, string duration)
         {
             if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(Info))
             {
                 return false;
             }
-            if (title.Length > 200 || Info.Length > 900)
+            if (title.Length > MaxTitleLength || Info.Length > MaxTitleLength)
             {
                 return false;
             }
@@ -69,24 +61,25 @@ namespace KanbanToDoListMVVM.ViewModels.Utilities
             return true;
         }//End
 
+        /// <summary>
+        /// Checks: empty fields, valid lengths, and valid stage index.
+        /// </summary>
         public static bool IsTaskFormValid(string title, string Info, int comboBoxStage)
         {
-            if (title == "" || Info == "")
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(Info))
             {
-                MessageBox.Show("UserName Connot be Empty.");
                 return false;
             }
-            if (title.Length > 200 || Info.Length > 900)
+            if (title.Length > MaxTitleLength || Info.Length > MaxInfoLength)
             {
-                MessageBox.Show("Title or Info exceeds the allowed limit.");
                 return false;
             }
             if (comboBoxStage < 0)
             {
-                MessageBox.Show("Duration must be a number.");
                 return false;
             }
             return true;
         }//End
+
     }
 }
