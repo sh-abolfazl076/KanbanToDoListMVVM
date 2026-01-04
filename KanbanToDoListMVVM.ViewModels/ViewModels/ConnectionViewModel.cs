@@ -9,7 +9,7 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class ConnectionViewModel :ViewModelBase
+    public class ConnectionViewModel : ViewModelBase, IConnectionViewModel
     {
         private string _title;
         public string Title
@@ -22,11 +22,11 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         private string _serverName = ".\\Moein2019";
         public string ServerName
         {
-            get => _serverName ;
+            get => _serverName;
             set
             {
                 _serverName = value;
@@ -46,7 +46,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         private string _usernameDatabase = "sa";
         public string UsernameDatabase
         {
@@ -83,7 +83,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         }
         ////
 
-        public ICommand CheckConnectionCommand {  get;}
+        public ICommand CheckConnectionCommand { get; }
 
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public ConnectionViewModel(NavigationStore navigationStore)
         {
             CheckConnectionCommand = new ConnectionCommand<LoginViewModel>(this,
-                new NavigationService<LoginViewModel>(navigationStore,() => new LoginViewModel(navigationStore)));
+                new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
         }//End
 
     }

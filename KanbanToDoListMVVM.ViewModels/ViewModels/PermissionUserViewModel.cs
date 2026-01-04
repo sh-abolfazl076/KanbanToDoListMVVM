@@ -13,7 +13,7 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class PermissionUserViewModel : ViewModelBase
+    public class PermissionUserViewModel : ViewModelBase, IPermissionUserViewModel
     {
         private int _userId;
 
@@ -31,7 +31,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         private bool _addTask;
         public bool AddTask
         {
@@ -91,7 +91,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
 
-        
+
         public ICommand SubmitPermssionUserCommand { get; }
         public ICommand BackToUserListCommand { get; }
 
@@ -100,10 +100,10 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         /// </summary>
         /// <param name="userId">The ID of the user</param>
         /// <param name="navigationStore">change pages in the app</param>
-        public PermissionUserViewModel(int userId ,NavigationStore navigationStore)
+        public PermissionUserViewModel(int userId, NavigationStore navigationStore)
         {
             _userId = userId;
-            SubmitPermssionUserCommand = new PermissionUserCommand(this,userId,navigationStore);
+            SubmitPermssionUserCommand = new PermissionUserCommand(this, userId, navigationStore);
             BackToUserListCommand = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
             LoadUserPermissions();
         }//End
@@ -122,7 +122,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
                 { "ModifyTask",v => UpdateTask = v },
                 { "AccessUsers",v => ManageUserAccess = v }
             };
-            
+
             try
             {
                 using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
@@ -132,7 +132,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
                         int permId = db.PermissionsRepository.GetPermissionIdByTitle(permission.Key);
                         var existing = db.UserPermissionsRepository.CheckPermission(_userId, permId);
 
-                        permission.Value(existing != null); 
+                        permission.Value(existing != null);
                     }
                 }
             }

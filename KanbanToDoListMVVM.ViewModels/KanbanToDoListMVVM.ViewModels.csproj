@@ -75,6 +75,17 @@
     <Compile Include="ViewModels\ConnectionViewModel.cs" />
     <Compile Include="ViewModels\CreateTaskViewModel.cs" />
     <Compile Include="ViewModels\EditUserViewModel.cs" />
+    <Compile Include="ViewModels\Interface\ILoginViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IMainPanleViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IMainViewModel.cs" />
+    <Compile Include="ViewModels\Interface\ICreateTaskViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IEditUserViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IConnectionViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IPermissionUserViewModel.cs" />
+    <Compile Include="ViewModels\Interface\ISingUpViewModel.cs" />
+    <Compile Include="ViewModels\Interface\ITaskViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IUsersListViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IViewModelBase.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainPanleViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

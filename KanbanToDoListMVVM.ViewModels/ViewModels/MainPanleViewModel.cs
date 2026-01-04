@@ -14,7 +14,7 @@ using KanbanToDoListMVVM.ViewModels.Utilities;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class MainPanleViewModel : ViewModelBase
+    public class MainPanleViewModel : ViewModelBase, IMainPanleViewModel
     {
 
         public ICommand UsersListCommand { get; }
@@ -32,7 +32,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         /// This creates the MainPanelViewModel and sets the buttons and user permissions.
         /// </summary>
         /// <param name="navigationStore">change pages in the app</param>
-        public MainPanleViewModel(NavigationStore navigationStore) 
+        public MainPanleViewModel(NavigationStore navigationStore)
         {
             LogOutCommand = new NavigateCommand<LoginViewModel>(
                 new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
@@ -52,7 +52,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
                 if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.AccessUsers) != null)
                 {
                     UsersListCommand = new NavigateCommand<UsersListViewModel>(
-                        new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));  
+                        new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
                 }
             }
         }//End
@@ -65,11 +65,11 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         {
             int userId = ApplicationStore.Instance.UserId;
 
-            LoadTask(ToDoTasks, userId,TaskStages.ToDo);
-            LoadTask(DoingTasks, userId,TaskStages.Doing);
-            LoadTask(ReviewTasks, userId,TaskStages.Review);
-            LoadTask(DoneTasks, userId,TaskStages.Done);
-            LoadTask(CancelledTasks, userId,TaskStages.Cancelled);
+            LoadTask(ToDoTasks, userId, TaskStages.ToDo);
+            LoadTask(DoingTasks, userId, TaskStages.Doing);
+            LoadTask(ReviewTasks, userId, TaskStages.Review);
+            LoadTask(DoneTasks, userId, TaskStages.Done);
+            LoadTask(CancelledTasks, userId, TaskStages.Cancelled);
         }//End
 
 

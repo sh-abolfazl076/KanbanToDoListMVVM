@@ -8,7 +8,7 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class EditUserViewModel : ViewModelBase
+    public class EditUserViewModel : ViewModelBase, IEditUserViewModel
     {
         private string _titleUserEdit;
         public string TitleUserEdit
@@ -57,7 +57,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         public ICommand SubmitUserEditCommand { get; }
         public ICommand BackToUserListCommand { get; }
 
@@ -70,7 +70,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public EditUserViewModel(int userId, NavigationStore navigationStore)
         {
             BackToUserListCommand = new NavigateCommand<UsersListViewModel>(new NavigationService<UsersListViewModel>(navigationStore, () => new UsersListViewModel(navigationStore)));
-            SubmitUserEditCommand = new EditUserCommand(this,userId, navigationStore);
+            SubmitUserEditCommand = new EditUserCommand(this, userId, navigationStore);
         }//End
 
     }

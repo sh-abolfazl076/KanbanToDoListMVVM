@@ -7,12 +7,12 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, IMainViewModel
     {
         private NavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public MainViewModel(NavigationStore navigationStore) 
+        public MainViewModel(NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModleChanged;

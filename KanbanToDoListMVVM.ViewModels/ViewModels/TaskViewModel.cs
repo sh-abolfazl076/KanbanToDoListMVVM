@@ -11,7 +11,7 @@ using KanbanToDoListMVVM.ViewModels.Utilities;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class TaskViewModel : ViewModelBase
+    public class TaskViewModel : ViewModelBase, ITaskViewModel
     {
         private string _taskTitle;
         public string TaskTitle
@@ -24,7 +24,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         private string _taskDescription;
         public string TaskDescription
         {
@@ -63,7 +63,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         /// </summary>
         /// <param name="task">task data</param>
         /// <param name="navigationStore">change pages in the app</param>
-        public TaskViewModel(Tasks task ,NavigationStore navigationStore)
+        public TaskViewModel(Tasks task, NavigationStore navigationStore)
         {
             TaskTitle = task.Title;
             TaskDescription = task.Description;
@@ -74,7 +74,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             {
                 if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.ModifyTask) != null)
                 {
-                    SubmitEditTaskCommand = new EditTaskCommand(task ,this, navigationStore);  
+                    SubmitEditTaskCommand = new EditTaskCommand(task, this, navigationStore);
                 }
 
                 if (db.UserPermissionsRepository.CheckPermission(ApplicationStore.Instance.UserId, PermissionId.RemoveTask) != null)

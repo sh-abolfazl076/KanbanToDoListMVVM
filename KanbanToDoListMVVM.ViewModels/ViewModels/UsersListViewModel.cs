@@ -14,9 +14,9 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class UsersListViewModel : ViewModelBase
+    public class UsersListViewModel : ViewModelBase, IUsersListViewModel
     {
-        
+
         private string _removeUserLabal;
         public string RemoveUserLabal
         {
@@ -47,7 +47,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public UsersListViewModel(NavigationStore navigationStore)
         {
             LoadData();
-            UserRemoveCommand = new UserRemoveCommand(this,navigationStore);
+            UserRemoveCommand = new UserRemoveCommand(this, navigationStore);
             UserEditCommand = new GetUserIdForEditUserCommand(this, navigationStore);
             PermissionCommand = new GetUserIdForPermissionCommand(this, navigationStore);
             BackToMainPanleCommand = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
@@ -71,7 +71,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 
                 foreach (var user in getUsers)
                 {
-                    
+
                     UsersList.Add(new Users
                     {
                         ID = user.ID,

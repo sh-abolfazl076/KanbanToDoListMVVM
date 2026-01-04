@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged, IViewModelBase
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

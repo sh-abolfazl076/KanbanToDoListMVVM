@@ -10,9 +10,9 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase, ILoginViewModel
     {
-        
+
         private string _title;
         public string Title
         {
@@ -24,7 +24,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         private string _username;
         public string Username
         {
@@ -36,7 +36,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-       
+
         private string _password;
         public string Password
         {

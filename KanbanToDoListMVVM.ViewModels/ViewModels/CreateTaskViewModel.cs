@@ -12,9 +12,9 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class CreateTaskViewModel : ViewModelBase
+    public class CreateTaskViewModel : ViewModelBase, ICreateTaskViewModel
     {
-        
+
         private string _taskTitle;
         public string TaskTitle
         {
@@ -51,7 +51,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         }
         ////
 
-        
+
         private string _searchText;
         public string SearchText
         {
@@ -64,15 +64,15 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         private Users _selectedUser;
         public Users SelectedUser
         {
             get => _selectedUser;
-            set 
-            { 
-                _selectedUser = value; 
-                OnPropertyChanged(nameof(SelectedUser)); 
+            set
+            {
+                _selectedUser = value;
+                OnPropertyChanged(nameof(SelectedUser));
             }
         }
         ////
@@ -90,7 +90,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         ////
 
         public ObservableCollection<Users> UsersList { get; set; } = new ObservableCollection<Users>();
-        
+
         public ICommand SubmitAddTask { get; }
 
         public ICommand BackToMainPanelCommand { get; }
@@ -101,7 +101,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         /// <param name="navigationStore">change pages in the app</param>
         public CreateTaskViewModel(NavigationStore navigationStore)
         {
-            SubmitAddTask = new CreateTaskCommand(this,navigationStore);
+            SubmitAddTask = new CreateTaskCommand(this, navigationStore);
             BackToMainPanelCommand = new NavigateCommand<MainPanleViewModel>(new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
             LoadUsers();
         }//End
@@ -115,7 +115,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             using (UnitOfWork db = new UnitOfWork(ApplicationStore.Instance.EfConnectionString))
             {
                 UsersList.Clear();
-                foreach (var u in db.UsersRepository.GetAllUsers())UsersList.Add(u);
+                foreach (var u in db.UsersRepository.GetAllUsers()) UsersList.Add(u);
             }
         }//End
 
@@ -129,7 +129,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             {
                 UsersList.Clear();
                 var result = db.UsersRepository.FilterUserByUsername(SearchText ?? "");
-                foreach (var u in result)UsersList.Add(u);
+                foreach (var u in result) UsersList.Add(u);
             }
         }//End
 

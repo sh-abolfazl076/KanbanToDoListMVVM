@@ -8,7 +8,7 @@ using KanbanToDoListMVVM.ViewModels.Stores;
 
 namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
-    public class SingUpViewModel :ViewModelBase
+    public class SingUpViewModel : ViewModelBase, ISingUpViewModel
     {
         private string _title;
         public string Title
@@ -21,7 +21,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
             }
         }
         ////
-        
+
         private string _username;
         public string Username
         {
@@ -79,7 +79,7 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         public SingUpViewModel(NavigationStore navigationStore)
         {
             BackToLoginCommand = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
-            SubmitAddUserCommand = new SingUpCommand(this , navigationStore);
+            SubmitAddUserCommand = new SingUpCommand(this, navigationStore);
         }//End
 
     }
