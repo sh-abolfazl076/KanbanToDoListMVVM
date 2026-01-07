@@ -1,6 +1,7 @@
 ﻿// System
 using System;
 using System.IO;
+using Newtonsoft.Json;
 
 // Internal
 using KanbanToDoListMVVM.Models.Models;
@@ -10,7 +11,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 {
     public class ApplicationStore : IApplicationStore
     {
-        private static readonly string filePath = "connection.json";
+        //private static readonly string filePath = "connection.json";
 
         private static readonly Lazy<ApplicationStore> _instance =
             new Lazy<ApplicationStore>(() => new ApplicationStore());

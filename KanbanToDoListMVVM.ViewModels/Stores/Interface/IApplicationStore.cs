@@ -3,7 +3,7 @@ namespace KanbanToDoListMVVM.ViewModels.Stores
 {
     public interface IApplicationStore
     {
-        static abstract ApplicationStore Instance { get; }
+        //static abstract ApplicationStore Instance { get; }
         string DatabaseName { get; }
         string EfConnectionString { get; }
         string PasswordDatabase { get; }
