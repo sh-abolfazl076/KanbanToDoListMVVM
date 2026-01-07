@@ -10,7 +10,7 @@ using KanbanToDoListMVVM.ViewModels.ViewModels;
 
 namespace KanbanToDoListMVVM.ViewModels.Stores
 {
-    public class NavigationStore
+    public class NavigationStore : INavigationStore
     {
         public event Action CurrentViewModelChanged;
         private ViewModelBase _currentViewModel;
