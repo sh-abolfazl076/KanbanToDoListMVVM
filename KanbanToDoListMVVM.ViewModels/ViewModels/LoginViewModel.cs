@@ -70,16 +70,16 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         /// This creates the LoginViewModel and sets the commands for navigation and login.
         /// </summary>
         /// <param name="navigationStore">switch between pages</param>
-        public LoginViewModel(NavigationStore navigationStore)
+        public LoginViewModel(INavigationStore navigationStore)
         {
-            ConnectionCommand = new NavigateCommand<ConnectionViewModel>
-                (new NavigationService<ConnectionViewModel>(navigationStore, () => new ConnectionViewModel(navigationStore)));
+            //ConnectionCommand = new NavigateCommand<ConnectionViewModel>
+            //    (new NavigationService<ConnectionViewModel>(navigationStore, () => new ConnectionViewModel(navigationStore)));
 
-            SingUpCommand = new NavigateCommand<SingUpViewModel>(
-                new NavigationService<SingUpViewModel>(navigationStore, () => new SingUpViewModel(navigationStore)));
+            //SingUpCommand = new NavigateCommand<SingUpViewModel>(
+            //    new NavigationService<SingUpViewModel>(navigationStore, () => new SingUpViewModel(navigationStore)));
 
-            LoginCommand = new LoginCommand<MainPanleViewModel>(this,
-                new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
+            //LoginCommand = new LoginCommand<MainPanleViewModel>(this,
+            //    new NavigationService<MainPanleViewModel>(navigationStore, () => new MainPanleViewModel(navigationStore)));
         }//End
 
     }

@@ -12,7 +12,7 @@ namespace KanbanToDoListMVVM.ViewModels.Configuration
 {
     public class ContainerConfig
     {
-        public static IContainer Congigure()
+        public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
 

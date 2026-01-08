@@ -9,10 +9,10 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 {
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
-        private NavigationStore _navigationStore;
+        private INavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public MainViewModel(NavigationStore navigationStore)
+        public MainViewModel(INavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModleChanged;

@@ -90,10 +90,10 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
         /// his sets the connection command for the ConnectionViewModel.
         /// </summary>
         /// <param name="navigationStore"></param>
-        public ConnectionViewModel(NavigationStore navigationStore)
+        public ConnectionViewModel(INavigationStore navigationStore)
         {
-            CheckConnectionCommand = new ConnectionCommand<LoginViewModel>(this,
-                new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
+            //CheckConnectionCommand = new ConnectionCommand<LoginViewModel>(this,
+            //    new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
         }//End
 
     }
