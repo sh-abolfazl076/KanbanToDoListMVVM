@@ -12,14 +12,14 @@ namespace KanbanToDoListMVVM.ViewModels.Commands
     public class ConnectionCommand<TViewModle> : CommandBase where TViewModle : ViewModelBase
     {
         private ConnectionViewModel _viewModel;
-        private readonly NavigationService<TViewModle> _navigationService;
+        private readonly INavigationService<LoginViewModel> _navigationService;
 
         /// <summary>
         /// This creates the ConnectionCommand and saves the view model and navigation service.
         /// </summary>
         /// <param name="viewModel"></param>
         /// <param name="navigationService"></param>
-        public ConnectionCommand(ConnectionViewModel viewModel, NavigationService<TViewModle> navigationService)
+        public ConnectionCommand(ConnectionViewModel viewModel, INavigationService<LoginViewModel> navigationService)
         {
             _viewModel = viewModel;
             _navigationService = navigationService;

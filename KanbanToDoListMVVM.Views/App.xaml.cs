@@ -51,7 +51,7 @@ namespace KanbanToDoListMVVM.Views
             }
             else
             {
-                navigationStore.CurrentViewModel = (ViewModelBase)_container.Resolve<IConnectionViewModel>();
+                navigationStore.CurrentViewModel = (ViewModelBase)_container.Resolve<ConnectionViewModel>();
                 MainWindow = new MainWindow()
                 {
                     DataContext = mainViewModel

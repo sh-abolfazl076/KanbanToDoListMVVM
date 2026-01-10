@@ -97,6 +97,7 @@
     <Compile Include="Commands\UserCommand.cs" />
     <Compile Include="Commands\UserRemoveCommand.cs" />
     <Compile Include="Configuration\ContainerConfig.cs" />
+    <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\ApplicationStore.cs" />
     <Compile Include="Stores\ConnectionInfo.cs" />

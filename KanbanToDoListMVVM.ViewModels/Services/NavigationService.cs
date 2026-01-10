@@ -9,13 +9,13 @@ using KanbanToDoListMVVM.ViewModels.ViewModels;
 
 namespace KanbanToDoListMVVM.ViewModels.Services
 {
-    public class NavigationService<TVeiwModel> where TVeiwModel : ViewModelBase
+    public class NavigationService<TVeiwModel> : INavigationService<TVeiwModel> where TVeiwModel : ViewModelBase
     {
-        
-        private readonly NavigationStore _navigationStore;
+
+        private readonly INavigationStore _navigationStore;
         private readonly Func<TVeiwModel> _createViewModle;
 
-        public NavigationService(NavigationStore navigationStore, Func<TVeiwModel> createViewModle)
+        public NavigationService(INavigationStore navigationStore, Func<TVeiwModel> createViewModle)
         {
             _navigationStore = navigationStore;
             _createViewModle = createViewModle;

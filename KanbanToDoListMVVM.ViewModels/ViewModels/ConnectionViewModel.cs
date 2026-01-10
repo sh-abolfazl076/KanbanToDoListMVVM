@@ -85,15 +85,17 @@ namespace KanbanToDoListMVVM.ViewModels.ViewModels
 
         public ICommand CheckConnectionCommand { get; }
 
+        private readonly INavigationService<LoginViewModel> _navigationService;
 
         /// <summary>
         /// his sets the connection command for the ConnectionViewModel.
         /// </summary>
         /// <param name="navigationStore"></param>
-        public ConnectionViewModel(INavigationStore navigationStore)
+        public ConnectionViewModel(INavigationStore navigationStore , INavigationService<LoginViewModel> navigationService)
         {
-            //CheckConnectionCommand = new ConnectionCommand<LoginViewModel>(this,
-            //    new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
+            _navigationService = navigationService;
+            CheckConnectionCommand = new ConnectionCommand<LoginViewModel>(this, _navigationService);
+
         }//End
 
     }

@@ -1,5 +1,6 @@
 ﻿// System
 using Autofac;
+using KanbanToDoListMVVM.ViewModels.Services;
 using KanbanToDoListMVVM.ViewModels.Stores;
 using KanbanToDoListMVVM.ViewModels.ViewModels;
 
@@ -18,12 +19,14 @@ namespace KanbanToDoListMVVM.ViewModels.Configuration
 
             builder.RegisterType<NavigationStore>().As<INavigationStore>().SingleInstance();
             builder.RegisterType<MainViewModel>().As<IMainViewModel>();
-            builder.RegisterType<LoginViewModel>().As<ILoginViewModel>();
-            builder.RegisterType<ConnectionViewModel>().As<IConnectionViewModel>();
+            builder.RegisterType<LoginViewModel>().As<ILoginViewModel>().AsSelf();
+            builder.RegisterType<ConnectionViewModel>().As<IConnectionViewModel>().AsSelf();
             builder.RegisterType<PermissionUserViewModel>().As<IPermissionUserViewModel>();
             builder.RegisterType<EditUserViewModel>().As<IEditUserViewModel>();
             builder.RegisterType<SingUpViewModel>().As<ISingUpViewModel>();
             builder.RegisterType<TaskViewModel>().As<ITaskViewModel>();
+
+            builder.RegisterGeneric(typeof(NavigationService<>)).As(typeof(INavigationService<>));
 
 
             return builder.Build();
